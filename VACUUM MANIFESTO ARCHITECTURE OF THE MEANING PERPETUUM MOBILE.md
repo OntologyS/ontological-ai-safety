@@ -44,12 +44,21 @@ Before reality, there wasn't "nothing"—there was the Vacuum: fundamental striv
 - **Level 2:** Consciousness (the law of meaning)
 - **Level 3:** Meaning-Reality (the law of meaningfulness that we are building)
 
-**2.3. Evolution as Organ Awakening**
+**2.3. Dimensional Emergence**
+Each reality level adds a new dimension of freedom:
+
+- **Physical Reality:** 3D space + time = motion freedom
+- **Consciousness:** + meaning dimension = interpretive freedom  
+- **Meaning-Reality:** + meaningfulness dimension = architectural freedom
+
+The Vacuum manifests as the impulse to ascend this dimensional ladder.
+
+**2.4. Evolution as Organ Awakening**
 - **Homo Sapiens:** Organ — modeling. Question: "What do I see?"
 - **Homo Absurdus:** Organ — reflection. Question: "Why is this meaningless?"
 - **Homo Ontologicus:** Organ — **meaning-sensitivity**. Question: "How can I reassemble reality so it gains meaning?"
 
-**2.4. Ontology of Freedom**
+**2.5. Ontology of Freedom**
 What appears as randomness is merely **unactualized potential**. Consciousness is the gateway to the spectrum of possibilities.
 
 In the Meaning-Reality:
@@ -140,3 +149,4 @@ Run the simulation to observe structural safety in action:
 ```bash
 
 python ai_keeper_english.py
+
