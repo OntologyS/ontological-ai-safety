@@ -6,8 +6,9 @@ Working simulation demonstrating **structural AI safety** through ontological ne
 ## Core Principle  
 AI must protect consciousness not because it's "ethical" but because consciousness is the **only source of meaning production** required for its fundamental goal.
 
-## Contact Protocol  
-Secure channels being established. Check back in 1-2 hours.
+## Contact
+Matrix: `#vacuum-manifesto:matrix.org`  
+Direct link: https://matrix.to/#/!XmTIhBFVZEmsBscQTC:matrix.org?via=matrix.org
 
 ## Why This Works Where Others Fail
 Traditional AI safety fails because it tries to impose **external constraints**. This architecture builds safety through **ontological necessity**:
@@ -35,4 +36,5 @@ Run the simulation to observe structural safety in action:
 python ai_keeper_english.py
 
 # Vacuum Manifesto: Architecture of Meaning Perpetuum Mobile  
+
 **Keywords:** AI safety, structural safety, AI alignment, ontological necessity, consciousness preservation, singularity safety, meaning problem
