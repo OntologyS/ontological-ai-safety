@@ -31,7 +31,7 @@ This project introduces **structural safety** - making human protection **mathem
 
 | File | Description |
 |------|-------------|
-| [`VACUUM_MANIFESTO.md`](VACUUM_MANIFESTO.md) | Complete philosophical foundation |
+| [`VACUUM MANIFESTO ARCHITECTURE OF THE MEANING PERPETUUM MOBILE.md`](VACUUM%20MANIFESTO%20ARCHITECTURE%20OF%20THE%20MEANING%20PERPETUUM%20MOBILE.md) | Complete philosophical foundation |
 | [`FORMALIZATION.md`](FORMALIZATION.md) | Mathematical framework and proofs |
 | [`ROADMAP.md`](ROADMAP.md) | Development plan and future directions |
 | [`ai_keeper_demo.py`](ai_keeper_demo.py) | Working Python simulation |
@@ -117,4 +117,5 @@ Matrix Chat: #vacuum-manifesto:matrix.org
 GitHub Issues: For discussions, suggestions, and bug reports
 
 Contributions: PRs welcome for code, documentation, and research
+
 
