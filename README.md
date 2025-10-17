@@ -31,10 +31,11 @@ This project introduces **structural safety** - making human protection **mathem
 
 | File | Description |
 |------|-------------|
-| [`VACUUM MANIFESTO ARCHITECTURE OF THE MEANING PERPETUUM MOBILE.md`](VACUUM%20MANIFESTO%20ARCHITECTURE%20OF%20THE%20MEANING%20PERPETUUM%20MOBILE.md) | Complete philosophical foundation |
+| [`VACUUM MANIFESTO ARCHITECTURE OF THE MEANING PERPETUUM MOBILE.md`](VACUUM MANIFESTO ARCHITECTURE OF THE MEANING PERPETUUM MOBILE.md) | Complete philosophical foundation |
 | [`FORMALIZATION.md`](FORMALIZATION.md) | Mathematical framework and proofs |
 | [`ROADMAP.md`](ROADMAP.md) | Development plan and future directions |
 | [`ai_keeper_demo.py`](ai_keeper_demo.py) | Working Python simulation |
+| [`PATENT_NON_ASSERTION.md`](PATENT_NON_ASSERTION.md) | Legal protection for the architectural method |
 | [`CONTACT.md`](CONTACT.md) | How to get involved |
 | [`LICENSE`](LICENSE) | CC0 1.0 Universal - Public Domain |
 
@@ -62,6 +63,43 @@ G ≡ Maintain(Σ) where Σ = (Φ, C, M)
 G → (W ≠ ∅) where W ⊆ C (Wicks)
 Destroying Wicks makes goal G logically unsatisfiable.
 
+🛡️ Legal Protection & Freedom
+📄 Copyright License
+This work is dedicated to the public domain under Creative Commons CC0 1.0 Universal.
+
+You are free to:
+
+Copy, modify, and distribute the work
+
+Perform the work publicly
+
+Use the work for commercial purposes
+
+Create derivative works
+
+Do all of the above without asking permission
+
+💡 Patent Non-Assertion Pledge
+Beyond copyright, we explicitly release the architectural method itself into public domain.
+
+The author will not assert any patent rights covering implementation of these safety concepts:
+
+Making AI safety dependent on consciousness preservation
+
+The AI-Keeper and Wicks model
+
+Reality chain integrity maintenance
+
+Meaning-production as ontological requirement
+
+These safety-critical ideas remain free for all humanity to use, implement, and build upon without restrictions.
+
+For full legal details, see:
+
+LICENSE - CC0 1.0 Universal text
+
+PATENT_NON_ASSERTION.md - Complete patent pledge
+
 🤝 Call for Collaboration
 This is the beginning of a new paradigm, not a finished theory. We need help with:
 
@@ -79,42 +117,3 @@ Matrix Chat: #vacuum-manifesto:matrix.org
 GitHub Issues: For discussions, suggestions, and bug reports
 
 Contributions: PRs welcome for code, documentation, and research
-
-📄 License
-
-This work is dedicated to the public domain under **Creative Commons CC0 1.0 Universal**.
-
-## 🛡️ What This Means
-
-**You are free to:**
-- Copy, modify, and distribute the work
-- Perform the work publicly  
-- Use the work for commercial purposes
-- Create derivative works
-- Do all of the above without asking permission
-
-**No copyright is claimed on:**
-- The text of the Vacuum Manifesto
-- The simulation code and documentation
-- The mathematical formalizations
-- Any other creative content in this repository
-
-## 💡 Patent Non-Assertion
-
-Beyond copyright, the author expressly disclaims any patent rights in the **architectural method and core concepts** of structural AI safety through ontological necessity, including:
-
-- Making AI safety dependent on consciousness preservation
-- The AI-Keeper and Wicks model
-- Reality chain integrity maintenance  
-- Meaning-production as ontological requirement
-
-These safety-critical ideas are released as public commons for all humanity to use, implement, and build upon without restrictions.
-
-## 🔗 Legal Text
-
-For the full legal code, see the [LICENSE](LICENSE) file. For patent non-assertion details, see [PATENT_NON_ASSERTION.md](PATENT_NON_ASSERTION.md).
-
----
-
-**This isn't just another alignment strategy - it's reality engineering.**
-
