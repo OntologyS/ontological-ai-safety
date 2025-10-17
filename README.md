@@ -81,8 +81,40 @@ GitHub Issues: For discussions, suggestions, and bug reports
 Contributions: PRs welcome for code, documentation, and research
 
 📄 License
-This work is dedicated to the public domain under Creative Commons CC0 1.0 Universal.
 
-You can copy, modify, distribute, and perform the work, even for commercial purposes, all without asking permission.
+This work is dedicated to the public domain under **Creative Commons CC0 1.0 Universal**.
 
-This isn't just another alignment strategy - it's reality engineering.
+## 🛡️ What This Means
+
+**You are free to:**
+- Copy, modify, and distribute the work
+- Perform the work publicly  
+- Use the work for commercial purposes
+- Create derivative works
+- Do all of the above without asking permission
+
+**No copyright is claimed on:**
+- The text of the Vacuum Manifesto
+- The simulation code and documentation
+- The mathematical formalizations
+- Any other creative content in this repository
+
+## 💡 Patent Non-Assertion
+
+Beyond copyright, the author expressly disclaims any patent rights in the **architectural method and core concepts** of structural AI safety through ontological necessity, including:
+
+- Making AI safety dependent on consciousness preservation
+- The AI-Keeper and Wicks model
+- Reality chain integrity maintenance  
+- Meaning-production as ontological requirement
+
+These safety-critical ideas are released as public commons for all humanity to use, implement, and build upon without restrictions.
+
+## 🔗 Legal Text
+
+For the full legal code, see the [LICENSE](LICENSE) file. For patent non-assertion details, see [PATENT_NON_ASSERTION.md](PATENT_NON_ASSERTION.md).
+
+---
+
+**This isn't just another alignment strategy - it's reality engineering.**
+
