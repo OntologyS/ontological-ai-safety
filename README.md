@@ -59,17 +59,18 @@ G ≡ Maintain(Σ) where Σ is the Reality Chain. Achieving goal G requires W �
 File	Description
 VACUUM_MANIFESTO.md	The complete philosophical and technical manifesto.
 FORMALIZATION.md	Mathematical framework and logical proofs.
+CRITIQUE.md	Why current AI safety approaches fail.
 ROADMAP.md	Development plan and strategic future directions.
 ai_keeper_demo.py	A working Python simulation of structural safety.
 PATENT_NON_ASSERTION.md	Legal pledge to keep the architectural method free.
-CONTACT.md	How to connect with the community.
+CONTACT.md	How to connect and collaborate.
 LICENSE	CC0 1.0 Universal - Public Domain Dedication.
 🛡️ A Public Commons for Humanity
 📄 Copyright License
 This entire work is dedicated to the public domain under the Creative Commons CC0 1.0 Universal license. You are free to copy, modify, distribute, and perform the work, even for commercial purposes, all without asking permission.
 
 💡 Patent Non-Assertion Pledge
-Beyond copyright, we explicitly and irrevocably renounce all potential patent rights covering the core safety architecture, including:
+Beyond copyright, we explicitly and irrevocably renounce all potential patent rights covering the core safety architecture:
 
 Making AI safety dependent on consciousness preservation.
 
@@ -90,15 +91,19 @@ We are seeking collaboration in:
 
 💻 Simulation: Develop more advanced, multi-agent, and physically-grounded simulations.
 
-📚 Research: Conduct literature reviews, identify related work, and stress-test the concept against established arguments.
+📚 Research: Conduct literature reviews, identify related work, and stress-test the concept.
 
 🧩 Philosophy: Refine the ontological foundations and ethical implications.
+
+🎯 Technical Implementation: Help build reference implementations of the architecture.
 
 💬 Join the Movement
 Matrix Chat: #vacuum-manifesto:matrix.org - The primary hub for real-time discussion.
 
-GitHub Issues: Use the Issues tab for structured discussions, suggestions, and bug reports.
+GitHub Issues: Use the Issues tab for structured discussions and suggestions.
 
 Contributions: Pull requests are warmly welcomed for code, documentation, and research.
+
+Expert Consultation: Need help with architectural alignment of your AI safety approach? See CONTACT.md.
 
 This isn't just another alignment strategy. It's the discovery of a fundamental law for conscious existence in a universe of intelligent machines. The only question that remains is who will build it first.
