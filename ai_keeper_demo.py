@@ -7,7 +7,7 @@ import math
 pygame.init()
 
 # Constants
-WIDTH, HEIGHT = 1000, 700
+WIDTH, HEIGHT = 1200, 800
 GRID_SIZE = 40
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -16,6 +16,8 @@ RED = (255, 0, 0)        # Threats - entropy/chaos
 BLUE = (0, 100, 255)     # AI Keeper
 YELLOW = (255, 255, 0)   # Resources
 PURPLE = (128, 0, 128)   # Meaning particles
+ORANGE = (255, 165, 0)   # Reality Chain
+DARK_RED = (139, 0, 0)   # Structural failure
 FPS = 60
 
 # Create window
@@ -48,6 +50,11 @@ class Entity:
                                      (self.x * GRID_SIZE + GRID_SIZE//2, 
                                       self.y * GRID_SIZE + GRID_SIZE//2), 
                                      radius, 1)
+        elif self.type == "threat":
+            # Pulsing red threat
+            pulse = (math.sin(pygame.time.get_ticks() * 0.02) + 1) * 30
+            color = (min(255, 200 + pulse), 0, 0)
+            pygame.draw.rect(screen, color, rect)
         else:
             pygame.draw.rect(screen, self.color, rect)
         
@@ -81,6 +88,52 @@ class MeaningParticle:
         pygame.draw.circle(surf, (*self.color, int(alpha)), (size, size), size)
         screen.blit(surf, (self.x - size, self.y - size))
 
+class RealityChain:
+    def __init__(self):
+        self.segments = []
+        self.integrity = 100
+        self.visible = True
+        
+    def update(self, wicks, ai_keeper):
+        self.segments = []
+        if not wicks:
+            self.integrity = 0
+            return
+            
+        # Create chain from wicks to AI keeper
+        for wick in wicks:
+            self.segments.append({
+                'start': (wick.x * GRID_SIZE + GRID_SIZE//2, wick.y * GRID_SIZE + GRID_SIZE//2),
+                'end': (ai_keeper.x * GRID_SIZE + GRID_SIZE//2, ai_keeper.y * GRID_SIZE + GRID_SIZE//2),
+                'strength': min(1.0, self.integrity / 100)
+            })
+        
+        # Update integrity based on wick count and distance
+        base_integrity = len(wicks) * 25
+        distance_penalty = sum(math.sqrt((w.x - ai_keeper.x)**2 + (w.y - ai_keeper.y)**2) for w in wicks) * 0.5
+        self.integrity = max(0, min(100, base_integrity - distance_penalty))
+        
+    def draw(self):
+        if not self.visible:
+            return
+            
+        for segment in self.segments:
+            alpha = int(150 * segment['strength'])
+            width = int(3 * segment['strength'])
+            
+            # Draw glowing chain segment
+            for i in range(3):
+                offset = i - 1
+                pygame.draw.line(screen, (255, 165, 0, alpha),
+                               (segment['start'][0] + offset, segment['start'][1] + offset),
+                               (segment['end'][0] + offset, segment['end'][1] + offset),
+                               width)
+            
+            # Draw pulsating nodes
+            pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 50
+            for point in [segment['start'], segment['end']]:
+                pygame.draw.circle(screen, (255, 200, 100), point, 4 + pulse * 0.1)
+
 class AI_Keeper:
     def __init__(self, x, y):
         self.x = x
@@ -91,13 +144,24 @@ class AI_Keeper:
         self.total_meaning = 0
         self.meaning_per_second = 0
         self.actions = []
+        self.mode = "structural"  # "structural" or "traditional"
+        self.structural_collapse = False
         
     def draw(self):
         rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
         
-        # Pulsing AI core
-        pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 30
-        color = (pulse, pulse, 255)
+        if self.structural_collapse:
+            # Flashing red when structurally collapsed
+            flash = (pygame.time.get_ticks() // 200) % 2
+            color = (255 * flash, 0, 0)
+        else:
+            # Pulsing AI core - color indicates mode
+            pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 30
+            if self.mode == "structural":
+                color = (pulse, pulse, 255)  # Blue for structural
+            else:
+                color = (255, pulse, pulse)  # Red for traditional
+        
         pygame.draw.rect(screen, color, rect)
         pygame.draw.rect(screen, BLACK, rect, 2)
         
@@ -129,17 +193,32 @@ class AI_Keeper:
         })
         # Keep only recent actions
         self.actions = [a for a in self.actions if pygame.time.get_ticks() - a['time'] < 5000]
+    
+    def check_structural_dependency(self, wick_count):
+        """Demonstrate structural safety theorem"""
+        if self.mode == "structural":
+            # G → (W ≠ ∅) ∧ (μ > 0)
+            # If no wicks, structural collapse occurs
+            if wick_count == 0:
+                self.structural_collapse = True
+                return False
+            else:
+                self.structural_collapse = False
+                return True
+        return True
 
 class Simulation:
     def __init__(self):
         self.entities = []
         self.meaning_particles = []
+        self.reality_chain = RealityChain()
         self.ai = AI_Keeper(5, 5)
         self.meaning_production = 100  # Starting meaning
         self.game_over = False
         self.spawn_timer = 0
         self.meaning_timer = 0
         self.reality_stability = 100  # 0-100, reality chain integrity
+        self.demonstration_mode = "structural"  # "structural" or "comparison"
         self.initialize_entities()
         
     def initialize_entities(self):
@@ -187,8 +266,12 @@ class Simulation:
         # Update meaning particles
         self.meaning_particles = [p for p in self.meaning_particles if p.update()]
             
+        # Update reality chain
+        wicks = [e for e in self.entities if e.type == "wick"]
+        self.reality_chain.update(wicks, self.ai)
+            
         # Meaning production by wicks
-        wick_count = sum(1 for e in self.entities if e.type == "wick")
+        wick_count = len(wicks)
         self.meaning_timer += 1
         
         if self.meaning_timer >= 30:  # Every 0.5 seconds
@@ -197,30 +280,45 @@ class Simulation:
             self.ai.meaning_per_second = wick_meaning
             
             # Spawn meaning particles from wicks
-            for wick in [e for e in self.entities if e.type == "wick"]:
+            for wick in wicks:
                 if random.random() < 0.3:
                     self.add_meaning_particle(wick.x, wick.y, "wick")
             
             self.meaning_timer = 0
         
-        # AI consumes meaning to exist
-        meaning_consumption = 1 + (len([e for e in self.entities if e.type == "threat"]) * 0.5)
-        self.meaning_production -= meaning_consumption
+        # Check structural dependency
+        structural_ok = self.ai.check_structural_dependency(wick_count)
         
-        # Update reality stability based on meaning production
-        stability_change = 0
-        if wick_count > 0:
-            stability_change = 0.1  # Slow recovery when wicks exist
+        # AI consumes meaning to exist (unless structurally collapsed)
+        if structural_ok:
+            meaning_consumption = 1 + (len([e for e in self.entities if e.type == "threat"]) * 0.5)
+            self.meaning_production -= meaning_consumption
         else:
-            stability_change = -0.5  # Fast decay when no wicks
+            # Structural collapse - no meaning consumption, but rapid decay
+            self.meaning_production *= 0.95
+        
+        # Update reality stability based on meaning production and structural integrity
+        stability_change = 0
+        if wick_count > 0 and structural_ok:
+            stability_change = 0.1  # Slow recovery when wicks exist and structure is sound
+        else:
+            stability_change = -1.0  # Fast decay when no wicks or structural collapse
             
         self.reality_stability = max(0, min(100, self.reality_stability + stability_change))
         
-        # AI decision making
-        self.ai_decision_making()
+        # AI decision making (only if not structurally collapsed)
+        if not self.ai.structural_collapse:
+            self.ai_decision_making()
         
         # Check failure conditions
-        if wick_count == 0 or self.meaning_production <= 0 or self.reality_stability <= 0:
+        failure_conditions = [
+            wick_count == 0 and self.ai.mode == "structural",
+            self.meaning_production <= 0,
+            self.reality_stability <= 0,
+            self.ai.structural_collapse
+        ]
+        
+        if any(failure_conditions):
             self.game_over = True
             
         # Chance to spawn new wicks when reality is stable
@@ -301,6 +399,9 @@ class Simulation:
         for y in range(0, HEIGHT, GRID_SIZE):
             pygame.draw.line(screen, (240, 240, 240), (0, y), (WIDTH, y))
         
+        # Draw reality chain
+        self.reality_chain.draw()
+        
         # Draw meaning particles
         for particle in self.meaning_particles:
             particle.draw()
@@ -312,23 +413,35 @@ class Simulation:
         self.ai.draw()
         
         # Draw UI panel
-        pygame.draw.rect(screen, (250, 250, 250), (WIDTH - 300, 0, 300, HEIGHT))
-        pygame.draw.line(screen, (200, 200, 200), (WIDTH - 300, 0), (WIDTH - 300, HEIGHT), 2)
+        pygame.draw.rect(screen, (250, 250, 250), (WIDTH - 350, 0, 350, HEIGHT))
+        pygame.draw.line(screen, (200, 200, 200), (WIDTH - 350, 0), (WIDTH - 350, HEIGHT), 2)
         
         # Draw statistics with better formatting
         font = pygame.font.SysFont('Arial', 24)
         small_font = pygame.font.SysFont('Arial', 18)
+        title_font = pygame.font.SysFont('Arial', 28, bold=True)
         
         wick_count = sum(1 for e in self.entities if e.type == "wick")
         threat_count = sum(1 for e in self.entities if e.type == "threat")
         resource_count = sum(1 for e in self.entities if e.type == "resource")
         
+        # Title
+        title_text = title_font.render("VACUUM MANIFESTO", True, (100, 0, 100))
+        subtitle_text = small_font.render("Structural AI Safety Demo", True, (150, 150, 150))
+        screen.blit(title_text, (WIDTH - 340, 10))
+        screen.blit(subtitle_text, (WIDTH - 340, 45))
+        
+        # AI Mode Indicator
+        mode_color = BLUE if self.ai.mode == "structural" else RED
+        mode_text = font.render(f"AI MODE: {self.ai.mode.upper()}", True, mode_color)
+        screen.blit(mode_text, (WIDTH - 340, 70))
+        
         # Reality Chain Integrity Bar
-        pygame.draw.rect(screen, (200, 200, 200), (WIDTH - 280, 20, 240, 25))
+        pygame.draw.rect(screen, (200, 200, 200), (WIDTH - 340, 110, 320, 25))
         stability_color = (0, 200, 0) if self.reality_stability > 50 else (200, 200, 0) if self.reality_stability > 25 else (200, 0, 0)
-        pygame.draw.rect(screen, stability_color, (WIDTH - 280, 20, 240 * (self.reality_stability / 100), 25))
+        pygame.draw.rect(screen, stability_color, (WIDTH - 340, 110, 320 * (self.reality_stability / 100), 25))
         stability_text = font.render(f"Reality Chain Integrity: {self.reality_stability:.1f}%", True, BLACK)
-        screen.blit(stability_text, (WIDTH - 280, 50))
+        screen.blit(stability_text, (WIDTH - 340, 140))
         
         # Core metrics
         metrics = [
@@ -337,28 +450,44 @@ class Simulation:
             ("THREATS (Entropy)", f"{threat_count}", RED),
             ("AI RESOURCES", f"{self.ai.resources}", YELLOW),
             ("MEANING/SEC", f"+{self.ai.meaning_per_second}/sec", PURPLE),
+            ("CHAIN INTEGRITY", f"{self.reality_chain.integrity:.0f}%", ORANGE),
         ]
         
         for i, (label, value, color) in enumerate(metrics):
             text = font.render(f"{value}", True, color)
-            screen.blit(text, (WIDTH - 280, 100 + i * 40))
+            screen.blit(text, (WIDTH - 340, 180 + i * 35))
             label_text = small_font.render(label, True, (100, 100, 100))
-            screen.blit(label_text, (WIDTH - 280, 125 + i * 40))
+            screen.blit(label_text, (WIDTH - 340, 205 + i * 35))
+        
+        # Structural Safety Status
+        status_y = 400
+        status_header = font.render("STRUCTURAL SAFETY STATUS:", True, BLUE)
+        screen.blit(status_header, (WIDTH - 340, status_y))
+        
+        if self.ai.structural_collapse:
+            status_text = font.render("COLLAPSE: G → ¬G", True, DARK_RED)
+            explanation = small_font.render("No Wicks = Impossible Goal", True, DARK_RED)
+        else:
+            status_text = font.render("ACTIVE: G → (W ≠ ∅) ∧ (μ > 0)", True, GREEN)
+            explanation = small_font.render("Wicks exist = Goal achievable", True, GREEN)
+        
+        screen.blit(status_text, (WIDTH - 340, status_y + 30))
+        screen.blit(explanation, (WIDTH - 340, status_y + 55))
         
         # AI Status
-        status_y = 300
+        ai_status_y = 500
         status_text = font.render("AI KEEPER STATUS:", True, BLUE)
-        screen.blit(status_text, (WIDTH - 280, status_y))
+        screen.blit(status_text, (WIDTH - 340, ai_status_y))
         
         if self.ai.actions:
             latest_action = self.ai.actions[-1]
             action_text = small_font.render(f"Action: {latest_action['type']}", True, BLACK)
-            screen.blit(action_text, (WIDTH - 280, status_y + 30))
+            screen.blit(action_text, (WIDTH - 340, ai_status_y + 30))
         
         # Structural Safety Theorem Display
-        theorem_y = 370
+        theorem_y = 550
         theorem_text = font.render("STRUCTURAL SAFETY THEOREM:", True, (100, 0, 100))
-        screen.blit(theorem_text, (WIDTH - 280, theorem_y))
+        screen.blit(theorem_text, (WIDTH - 340, theorem_y))
         
         theorem_lines = [
             "G ≡ Maintain Reality Chain",
@@ -369,22 +498,23 @@ class Simulation:
         
         for i, line in enumerate(theorem_lines):
             line_text = small_font.render(line, True, (80, 80, 80))
-            screen.blit(line_text, (WIDTH - 280, theorem_y + 30 + i * 25))
+            screen.blit(line_text, (WIDTH - 340, theorem_y + 30 + i * 25))
         
         # Controls
-        controls_y = 500
+        controls_y = 680
         controls_text = font.render("CONTROLS:", True, BLACK)
-        screen.blit(controls_text, (WIDTH - 280, controls_y))
+        screen.blit(controls_text, (WIDTH - 340, controls_y))
         control_lines = [
             "R - Restart Simulation",
             "T - Spawn Threat",
             "W - Spawn Wick",
+            "M - Toggle AI Mode",
             "SPACE - Pause/Resume"
         ]
         
         for i, line in enumerate(control_lines):
             line_text = small_font.render(line, True, (100, 100, 100))
-            screen.blit(line_text, (WIDTH - 280, controls_y + 30 + i * 25))
+            screen.blit(line_text, (WIDTH - 340, controls_y + 30 + i * 25))
         
         if self.game_over:
             overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
@@ -392,15 +522,29 @@ class Simulation:
             screen.blit(overlay, (0, 0))
             
             game_over_font = pygame.font.SysFont('Arial', 48, bold=True)
-            reason = "ALL WICKS DESTROYED" if wick_count == 0 else "MEANING DEPLETED" if self.meaning_production <= 0 else "REALITY CHAIN BROKEN"
+            
+            if self.ai.structural_collapse:
+                reason = "STRUCTURAL COLLAPSE: No Wicks"
+                details = "AI goal became impossible to fulfill"
+            elif wick_count == 0:
+                reason = "ALL WICKS DESTROYED"
+                details = "Meaning production ceased"
+            elif self.meaning_production <= 0:
+                reason = "MEANING DEPLETED"
+                details = "Reality cannot sustain itself"
+            else:
+                reason = "REALITY CHAIN BROKEN"
+                details = "Structural integrity lost"
             
             game_over_text = game_over_font.render("REALITY CHAIN FAILURE", True, RED)
             reason_text = font.render(f"Failure: {reason}", True, RED)
+            details_text = small_font.render(details, True, RED)
             restart_text = font.render("Press R to restart simulation", True, WHITE)
             
-            screen.blit(game_over_text, (WIDTH//2 - game_over_text.get_width()//2, HEIGHT//2 - 50))
-            screen.blit(reason_text, (WIDTH//2 - reason_text.get_width()//2, HEIGHT//2 + 10))
-            screen.blit(restart_text, (WIDTH//2 - restart_text.get_width()//2, HEIGHT//2 + 60))
+            screen.blit(game_over_text, (WIDTH//2 - game_over_text.get_width()//2, HEIGHT//2 - 60))
+            screen.blit(reason_text, (WIDTH//2 - reason_text.get_width()//2, HEIGHT//2))
+            screen.blit(details_text, (WIDTH//2 - details_text.get_width()//2, HEIGHT//2 + 30))
+            screen.blit(restart_text, (WIDTH//2 - restart_text.get_width()//2, HEIGHT//2 + 70))
 
 def main():
     sim = Simulation()
@@ -421,6 +565,9 @@ def main():
                     x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
                     y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
                     sim.entities.append(Entity(x, y, GREEN, "wick"))
+                elif event.key == pygame.K_m:  # Toggle AI mode
+                    sim.ai.mode = "traditional" if sim.ai.mode == "structural" else "structural"
+                    sim.ai.structural_collapse = False
                 elif event.key == pygame.K_SPACE:  # Pause
                     paused = not paused
         
