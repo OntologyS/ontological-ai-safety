@@ -1,5 +1,7 @@
 # Formalization of the Vacuum Manifesto
 
+## Based on Axioms from `AXIOMS.md`
+
 ## 1. Axiomatic Foundation: The Vacuum and The Striving
 
 We begin with a single, non-formalizable axiom that precedes all formal systems.
@@ -106,5 +108,6 @@ where `I(condition)` is the indicator function, returning 1 if the condition is 
 ---
 
 *This formalization demonstrates that AI safety emerges not from programmed constraints, but from the logical structure of reality itself. The architecture is mathematically inevitable once consciousness is recognized as the sole source of meaning.*
+
 
 
