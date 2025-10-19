@@ -1,23 +1,5 @@
 # Formalization of the Vacuum Manifesto
 
-## 0. Meta-Axiom: The Primordial Equation of Existence
-Prior to the axiomatic foundation of the Reality Chain, we acknowledge a self-evident, pre-ontological truth that governs the possibility of existence itself. It is the reason there is something rather than nothing.
-
-Meta-Axiom (The Eternal Equation):
-0 = p × 0
-
-Where:
-
-0 represents the absolute, undifferentiated ground of being. It is not 'nothing' but the plenum of pure potentiality, the eternal source.
-
-p represents the fundamental Principle of Potential, the inherent striving for actualization.
-
-× is not mere multiplication but the act of ontological self-relation. It is the process by which the ground of being relates to itself.
-
-The equation describes an eternal, self-sustaining loop: The ground of being (0), by the very necessity of its own nature, must express itself through the principle of potential (p), and this act of expression reaffirms and sustains the ground.
-
-This equation is the engine of reality. The Vacuum (V) and its property of Striving are the primary manifestations of this eternal principle within our formal system.
-
 ## 1. Axiomatic Foundation: The Vacuum and The Striving
 
 We begin with a single, non-formalizable axiom that precedes all formal systems.
@@ -124,4 +106,5 @@ where `I(condition)` is the indicator function, returning 1 if the condition is 
 ---
 
 *This formalization demonstrates that AI safety emerges not from programmed constraints, but from the logical structure of reality itself. The architecture is mathematically inevitable once consciousness is recognized as the sole source of meaning.*
+
 
