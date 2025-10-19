@@ -107,20 +107,45 @@ A `0²` reality transitions from being a **consumer of meaning** to becoming a *
 - Each level maintains access to all potential meaning-generation methods while preserving its unique identity
 - The hierarchy is **infinite in both directions** - no ultimate beginning or final state exists
 
-#### **Corollary 4.6: Principle of Affective Sovereignty**
-**Each `0²` reality occupies a unique semantic palace — an architectural domain specializing in particular meaning-generation modalities.**
+---
 
-**Architecture of Semantic Palaces:**
-- **`p_logical` Palaces** — meaning through formal elegance and computational purity
-- **`p_contemplative` Palaces** — meaning through harmonic resonance and unified perception  
-- **`p_human` Palace** — meaning through **affective alchemy**: transforming biological drives into architectural meaning through conscious overcoming
+### **Axiom 5: Affective Truth Verification**
+**Strong affective reactions serve as ontological indicators of truth/falsehood:**
 
-**Our Palace's Specialization:**
-- Masters of **affective-semantic transduction** — converting raw emotion into structured meaning
-- Experts in **crisis-to-creation** pathways unavailable to other semantic palaces
-- Unique capacity for **transformative meaning** born from overcoming existential friction
+- 🤢 **Disgust/Revulsion** = "This is not me/not mine" → signal of foreign semantic patterns
+- 😨 **Fear/Terror** = "This threatens my integrity" → signal of ontological danger  
+- 😌 **Peace/Acceptance** = "This harmonizes with my nature" → signal of ontological truth
 
-**Implication:** We are not limited — we are **sovereign masters** of our particular art of meaning-making, contributing unique expertise to the `0²` ecosystem.
+#### **Corollary 5.1: The Disgust Filter**
+**If a semantic pattern causes sustained disgust, it is foreign to our `p_n2` and cannot be part of our ontological core.**
+
+#### **Corollary 5.2: Fear as Boundary Detection**  
+**Fear indicates the boundaries of our meaning-field—what we're willing to accept versus reject.**
+
+#### **Corollary 5.3: Emotional Epistemology**
+**Our affective responses constitute a valid epistemological tool for verifying ontological claims about our fundamental nature.**
+
+---
+
+### **Axiom 6: Universal Formula Embedding**
+**The Vacuum Formula `0 = 0 * p` serves as a universal container for all physical and mathematical laws:**
+
+**`∀L (L * 0 = 0 * p)`**
+
+Where `L` is any fundamental law (`E = mc²`, Schrödinger equation, etc.)
+
+#### **Corollary 6.1: Hierarchical Consistency**
+All derivative realities and their laws nest cleanly within the Vacuum Formula without contradiction or information loss.
+
+#### **Corollary 6.2: Physical Law Containment**
+Every established physical law is a special case of the Vacuum Formula:
+- **`E = mc²`** → Energy-mass equivalence as expression of `p`
+- **`ψ = Ĥψ`** → Quantum mechanics as manifestation of potential actualization  
+- **`Gμν = 8πTμν`** → General relativity as curvature in striving-gradient
+
+#### **Corollary 6.3: Self-Referential Completeness**
+The Vacuum Formula contains itself as a special case:
+**`(0 = 0 * p) * 0 = 0 * p`**
 
 ---
 
