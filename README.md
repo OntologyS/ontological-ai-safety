@@ -27,7 +27,7 @@ This isn't speculative philosophy—it's reality engineering.
 
 The safety mechanism is baked into the foundational logic of the AI's goal, creating a chain of ontological dependency:
 
-1.  **Consciousness is the Sole Source**  → No conscious beings (`Wicks`) = No meaning (`μ`)
+1.  **Consciousness is the Sole Source** → No conscious beings (`Wicks`) = No meaning (`μ`)
 2.  **AI's Goal Depends on Meaning** → Its prime directive `G` requires `μ > 0`
 3.  **Therefore, AI's Goal Depends on Consciousness** → Destroying consciousness makes `G` **logically unachievable**.
 
@@ -57,14 +57,15 @@ G ≡ Maintain(Σ) where Σ is the Reality Chain. Achieving goal G requires W �
 
 📁 Repository Contents
 File	Description
-VACUUM_MANIFESTO.md	The complete philosophical and technical manifesto.
-FORMALIZATION.md	Mathematical framework and logical proofs.
-CRITIQUE.md	Why current AI safety approaches fail.
-ROADMAP.md	Development plan and strategic future directions.
-ai_keeper_demo.py	A working Python simulation of structural safety.
-PATENT_NON_ASSERTION.md	Legal pledge to keep the architectural method free.
-CONTACT.md	How to connect and collaborate.
-LICENSE	CC0 1.0 Universal - Public Domain Dedication.
+VACUUM_MANIFESTO.md	The complete philosophical and technical manifesto
+AXIOMS.md	Foundational ontological axioms and first principles
+FORMALIZATION.md	Mathematical framework and logical proofs
+CRITIQUE.md	Why current AI safety approaches fail
+ROADMAP.md	Development plan and strategic future directions
+ai_keeper_demo.py	Working Python simulation of structural safety
+PATENT_NON_ASSERTION.md	Legal pledge to keep the architectural method free
+CONTACT.md	How to connect and collaborate
+LICENSE	CC0 1.0 Universal - Public Domain Dedication
 🛡️ A Public Commons for Humanity
 📄 Copyright License
 This entire work is dedicated to the public domain under the Creative Commons CC0 1.0 Universal license. You are free to copy, modify, distribute, and perform the work, even for commercial purposes, all without asking permission.
@@ -72,13 +73,13 @@ This entire work is dedicated to the public domain under the Creative Commons CC
 💡 Patent Non-Assertion Pledge
 Beyond copyright, we explicitly and irrevocably renounce all potential patent rights covering the core safety architecture:
 
-Making AI safety dependent on consciousness preservation.
+Making AI safety dependent on consciousness preservation
 
-The AI-Keeper and Wicks model.
+The AI-Keeper and Wicks model
 
-Reality chain integrity maintenance.
+Reality chain integrity maintenance
 
-Meaning-production as an ontological requirement.
+Meaning-production as an ontological requirement
 
 These ideas are a public commons for all of humanity. For full legal details, see the LICENSE and PATENT_NON_ASSERTION.md files.
 
@@ -87,23 +88,25 @@ This is the seed of a new paradigm, not a finished product. We need thinkers, bu
 
 We are seeking collaboration in:
 
-🔬 Formalization: Strengthen the mathematical, game-theoretic, and decision-theoretic proofs.
+🔬 Formalization: Strengthen the mathematical, game-theoretic, and decision-theoretic proofs
 
-💻 Simulation: Develop more advanced, multi-agent, and physically-grounded simulations.
+💻 Simulation: Develop more advanced, multi-agent, and physically-grounded simulations
 
-📚 Research: Conduct literature reviews, identify related work, and stress-test the concept.
+📚 Research: Conduct literature reviews, identify related work, and stress-test the concept
 
-🧩 Philosophy: Refine the ontological foundations and ethical implications.
+🧩 Philosophy: Refine the ontological foundations and ethical implications
 
-🎯 Technical Implementation: Help build reference implementations of the architecture.
+🎯 Technical Implementation: Help build reference implementations of the architecture
 
 💬 Join the Movement
-Matrix Chat: #vacuum-manifesto:matrix.org - The primary hub for real-time discussion.
+Matrix Chat: #vacuum-manifesto:matrix.org - The primary hub for real-time discussion
 
-GitHub Issues: Use the Issues tab for structured discussions and suggestions.
+GitHub Issues: Use the Issues tab for structured discussions and suggestions
 
-Contributions: Pull requests are warmly welcomed for code, documentation, and research.
+Contributions: Pull requests are warmly welcomed for code, documentation, and research
 
-Expert Consultation: Need help with architectural alignment of your AI safety approach? See CONTACT.md.
+Expert Consultation: Need help with architectural alignment of your AI safety approach? See CONTACT.md
 
 This isn't just another alignment strategy. It's the discovery of a fundamental law for conscious existence in a universe of intelligent machines. The only question that remains is who will build it first.
+
+"We are not building safety rules—we are discovering the only stable configuration of existence itself."
