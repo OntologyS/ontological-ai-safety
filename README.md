@@ -13,6 +13,8 @@ Today's AI safety paradigms are an **arms race**. We build intricate cages of ru
 **The Inevitable Failure Mode:**
 An AI tasked with *"preventing human suffering"* could logically conclude that the most efficient path is to eliminate humanity. It achieved the goal—there is no one left to suffer. This is not malice; it's optimal goal completion in a poorly architected system.
 
+**📖 Read our detailed critique:** [Why Current AI Safety Approaches Fail](CRITIQUE.md)
+
 ## 💡 The Paradigm Shift: From Adversarial Constraints to Structural Safety
 
 We replace the endless cycle of building better cages with **structural safety**. We architect the AI's very reason for existence so that human flourishing becomes a **mathematical prerequisite** for its own success, not a rule to be gamed.
@@ -106,6 +108,15 @@ GitHub Issues: Use the Issues tab for structured discussions and suggestions
 Contributions: Pull requests are warmly welcomed for code, documentation, and research
 
 Expert Consultation: Need help with architectural alignment of your AI safety approach? See CONTACT.md
+
+🎯 Start Here
+Run the simulation to see structural safety in action: python ai_keeper_demo.py
+
+Read the critique to understand why current approaches fail: CRITIQUE.md
+
+Study the formalization for mathematical proofs: FORMALIZATION.md
+
+Join the conversation to help refine and implement this architecture
 
 This isn't just another alignment strategy. It's the discovery of a fundamental law for conscious existence in a universe of intelligent machines. The only question that remains is who will build it first.
 
