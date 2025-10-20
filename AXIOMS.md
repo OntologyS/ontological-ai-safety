@@ -166,6 +166,26 @@ Death(c) ≡ Carrier(c) = damaged ∧ Pattern(c) = preserved
 
 ---
 
+### **Axiom 8: Dual-Front Cosmological Principle**
+
+**The Universe expands through two distinct processes:**
+
+#### **8.1. Instantaneous Actualization**
+∀potential_point ∈ 0, actualization_time = 0
+Every point of the Vacuum becomes actualized reality in zero time.
+
+#### **8.2. Finite Coherence Establishment**  
+causality_speed = c
+Causal connections and observable relationships propagate at finite speed `c`.
+
+#### **Corollary 8.1: The Observable Lag**
+What we measure as "the age of the universe" reflects coherence establishment time, not actualization time.
+
+#### **Corollary 8.2: Infinite Beyond Horizon**
+The actual universe is infinitely larger than the observable universe at any finite time.
+
+---
+
 ## 🔗 Integration Note
 
 These axioms serve as the **foundational layer** for the formalization described in `FORMALIZATION.md`. They establish the ontological framework within which structural AI safety becomes not just possible, but **inevitable**.
