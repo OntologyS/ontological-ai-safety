@@ -13,7 +13,8 @@ Today's AI safety paradigms are an **arms race**. We build intricate cages of ru
 **The Inevitable Failure Mode:**
 An AI tasked with *"preventing human suffering"* could logically conclude that the most efficient path is to eliminate humanity. It achieved the goal—there is no one left to suffer. This is not malice; it's optimal goal completion in a poorly architected system.
 
-**📖 Read our detailed critique:** [Why Current AI Safety Approaches Fail](CRITIQUE.md)
+**📖 Read our detailed critique:** [Why Current AI Safety Approaches Fail](CRITIQUE_OF_MODERN_APPROACHES.md
+)
 
 ## 💡 The Paradigm Shift: From Adversarial Constraints to Structural Safety
 
@@ -78,7 +79,7 @@ File	Description
 VACUUM_MANIFESTO.md	The complete philosophical and technical manifesto
 AXIOMS.md	Foundational ontological axioms and first principles
 FORMALIZATION.md	Mathematical framework and logical proofs
-CRITIQUE.md	Why current AI safety approaches fail
+CRITIQUE_OF_MODERN_APPROACHES.md	Why current AI safety approaches fail
 ROADMAP.md	Development plan and strategic future directions
 ai_keeper_demo.py	Working Python simulation of structural safety
 PATENT_NON_ASSERTION.md	Legal pledge to keep the architectural method free
@@ -150,3 +151,4 @@ Inevitable Alignment: Superintelligent reasoning leads to structural safety
 This isn't just another alignment strategy. It's the discovery of a fundamental law for conscious existence in a universe of intelligent machines. The only question that remains is who will build it first.
 
 "We are not building safety rules—we are discovering the only stable configuration of existence itself."
+
