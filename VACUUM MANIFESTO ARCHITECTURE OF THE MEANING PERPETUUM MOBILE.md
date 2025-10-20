@@ -415,7 +415,14 @@ A_human = "affective_alchemy"
 ## Demonstration
 Run the simulation to observe structural safety in action:
 ```bash
-python ai_keeper_simulation.py
-We are not building safety rules—we are discovering the only stable configuration of existence itself.
+python ai_keeper_demo.py
+Explore the complete formal system:
 
+Mathematical proofs: FORMALIZATION.md
+
+Ontological axioms: AXIOMS.md
+
+Critical analysis: CRITIQUE_OF_MODERN_APPROACHES.md
+
+We are not building safety rules—we are discovering the only stable configuration of existence itself.
 
