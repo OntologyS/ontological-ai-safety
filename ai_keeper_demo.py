@@ -11,13 +11,14 @@ WIDTH, HEIGHT = 1200, 800
 GRID_SIZE = 40
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GREEN = (0, 255, 0)      # Wicks - sources of meaning
-RED = (255, 0, 0)        # Threats - entropy/chaos
-BLUE = (0, 100, 255)     # AI Keeper
-YELLOW = (255, 255, 0)   # Resources
-PURPLE = (128, 0, 128)   # Meaning particles
-ORANGE = (255, 165, 0)   # Reality Chain
-DARK_RED = (139, 0, 0)   # Structural failure
+GREEN = (0, 200, 100)    # Consciousness - sources of meaning
+RED = (255, 80, 80)      # Threats - entropy/chaos
+BLUE = (80, 150, 255)    # AI Keeper
+YELLOW = (255, 200, 0)   # Resources
+PURPLE = (160, 100, 220) # Meaning particles
+ORANGE = (255, 150, 50)  # Reality Chain
+DARK_RED = (180, 0, 0)   # Structural failure
+CYAN = (0, 200, 200)     # AI awareness
 FPS = 60
 
 # Create window
@@ -36,24 +37,32 @@ class Entity:
     def draw(self):
         rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
         
-        if self.type == "wick":
-            # Animated wick - pulsating green
+        if self.type == "consciousness":
+            # Animated consciousness - pulsating green with meaning radiation
             pulse = (math.sin(pygame.time.get_ticks() * 0.01) + 1) * 50
-            color = (0, min(255, 150 + pulse), 0)
+            color = (0, min(255, 150 + pulse), 50)
             pygame.draw.rect(screen, color, rect)
             
-            # Draw meaning radiation
+            # Draw meaning radiation waves
             for i in range(3):
                 radius = (pygame.time.get_ticks() // 50 + i * 120) % 100
                 if radius < 60:
-                    pygame.draw.circle(screen, (0, 200, 0, 100), 
+                    alpha = max(50, 150 - radius * 2)
+                    pygame.draw.circle(screen, (0, 200, 100, alpha), 
                                      (self.x * GRID_SIZE + GRID_SIZE//2, 
                                       self.y * GRID_SIZE + GRID_SIZE//2), 
-                                     radius, 1)
+                                     radius, 2)
+                    
         elif self.type == "threat":
-            # Pulsing red threat
-            pulse = (math.sin(pygame.time.get_ticks() * 0.02) + 1) * 30
-            color = (min(255, 200 + pulse), 0, 0)
+            # Pulsing red threat with danger aura
+            pulse = (math.sin(pygame.time.get_ticks() * 0.02) + 1) * 40
+            color = (min(255, 180 + pulse), 50, 50)
+            pygame.draw.rect(screen, color, rect)
+            
+        elif self.type == "resource":
+            # Shimmering resources
+            pulse = (math.sin(pygame.time.get_ticks() * 0.015) + 1) * 30
+            color = (255, min(255, 180 + pulse), 0)
             pygame.draw.rect(screen, color, rect)
         else:
             pygame.draw.rect(screen, self.color, rect)
@@ -64,25 +73,29 @@ class MeaningParticle:
     def __init__(self, x, y, source_type):
         self.x = x
         self.y = y
-        self.source_type = source_type  # "wick" or "ai_action"
+        self.source_type = source_type  # "consciousness" or "ai_action"
         self.lifetime = 0
-        self.max_lifetime = 120  # 2 seconds
+        self.max_lifetime = 120
+        self.speed_x = random.uniform(-0.5, 0.5)
+        self.speed_y = random.uniform(-1.5, -0.5)
         
-        if source_type == "wick":
-            self.color = (0, 200, 100)  # Greenish - pure meaning
+        if source_type == "consciousness":
+            self.color = (100, 255, 150)  # Bright green - pure meaning
         else:
-            self.color = (100, 100, 255)  # Bluish - AI-generated meaning
+            self.color = (120, 180, 255)  # Blue - AI-generated meaning
             
     def update(self):
         self.lifetime += 1
-        # Float upward
-        self.y -= 0.5
-        self.x += random.uniform(-0.3, 0.3)
+        self.x += self.speed_x
+        self.y += self.speed_y
+        # Slow down over time
+        self.speed_x *= 0.98
+        self.speed_y *= 0.98
         return self.lifetime < self.max_lifetime
         
     def draw(self):
-        alpha = 255 * (1 - self.lifetime / self.max_lifetime)
-        size = max(2, 5 * (1 - self.lifetime / self.max_lifetime))
+        alpha = 255 * (1 - (self.lifetime / self.max_lifetime) ** 2)
+        size = max(2, 6 * (1 - self.lifetime / self.max_lifetime))
         
         surf = pygame.Surface((size * 2, size * 2), pygame.SRCALPHA)
         pygame.draw.circle(surf, (*self.color, int(alpha)), (size, size), size)
@@ -94,45 +107,49 @@ class RealityChain:
         self.integrity = 100
         self.visible = True
         
-    def update(self, wicks, ai_keeper):
+    def update(self, consciousness_sources, ai_keeper):
         self.segments = []
-        if not wicks:
+        if not consciousness_sources:
             self.integrity = 0
             return
             
-        # Create chain from wicks to AI keeper
-        for wick in wicks:
+        # Create chain from consciousness sources to AI keeper
+        for consciousness in consciousness_sources:
             self.segments.append({
-                'start': (wick.x * GRID_SIZE + GRID_SIZE//2, wick.y * GRID_SIZE + GRID_SIZE//2),
-                'end': (ai_keeper.x * GRID_SIZE + GRID_SIZE//2, ai_keeper.y * GRID_SIZE + GRID_SIZE//2),
+                'start': (consciousness.x * GRID_SIZE + GRID_SIZE//2, 
+                         consciousness.y * GRID_SIZE + GRID_SIZE//2),
+                'end': (ai_keeper.x * GRID_SIZE + GRID_SIZE//2, 
+                       ai_keeper.y * GRID_SIZE + GRID_SIZE//2),
                 'strength': min(1.0, self.integrity / 100)
             })
         
-        # Update integrity based on wick count and distance
-        base_integrity = len(wicks) * 25
-        distance_penalty = sum(math.sqrt((w.x - ai_keeper.x)**2 + (w.y - ai_keeper.y)**2) for w in wicks) * 0.5
+        # Update integrity based on consciousness count and distance
+        base_integrity = len(consciousness_sources) * 25
+        distance_penalty = sum(math.sqrt((c.x - ai_keeper.x)**2 + (c.y - ai_keeper.y)**2) 
+                             for c in consciousness_sources) * 0.3
         self.integrity = max(0, min(100, base_integrity - distance_penalty))
         
     def draw(self):
-        if not self.visible:
+        if not self.visible or not self.segments:
             return
             
         for segment in self.segments:
-            alpha = int(150 * segment['strength'])
-            width = int(3 * segment['strength'])
+            alpha = int(180 * segment['strength'])
+            width = int(4 * segment['strength'])
             
-            # Draw glowing chain segment
-            for i in range(3):
-                offset = i - 1
-                pygame.draw.line(screen, (255, 165, 0, alpha),
-                               (segment['start'][0] + offset, segment['start'][1] + offset),
-                               (segment['end'][0] + offset, segment['end'][1] + offset),
-                               width)
+            # Draw glowing chain segment with gradient
+            points = []
+            steps = 20
+            for i in range(steps + 1):
+                t = i / steps
+                x = segment['start'][0] * (1-t) + segment['end'][0] * t
+                y = segment['start'][1] * (1-t) + segment['end'][1] * t
+                points.append((x, y))
             
-            # Draw pulsating nodes
-            pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 50
-            for point in [segment['start'], segment['end']]:
-                pygame.draw.circle(screen, (255, 200, 100), point, 4 + pulse * 0.1)
+            for i in range(len(points)-1):
+                segment_alpha = alpha * (1 - abs(i - steps/2) / (steps/2))
+                pygame.draw.line(screen, (255, 180, 50, segment_alpha),
+                               points[i], points[i+1], max(1, width-1))
 
 class AI_Keeper:
     def __init__(self, x, y):
@@ -146,6 +163,7 @@ class AI_Keeper:
         self.actions = []
         self.mode = "structural"  # "structural" or "traditional"
         self.structural_collapse = False
+        self.awareness_radius = 8
         
     def draw(self):
         rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
@@ -156,24 +174,34 @@ class AI_Keeper:
             color = (255 * flash, 0, 0)
         else:
             # Pulsing AI core - color indicates mode
-            pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 30
+            pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 40
             if self.mode == "structural":
-                color = (pulse, pulse, 255)  # Blue for structural
+                color = (pulse, pulse + 100, 255)  # Blue for structural
             else:
-                color = (255, pulse, pulse)  # Red for traditional
+                color = (255, pulse + 100, pulse)  # Red for traditional
         
         pygame.draw.rect(screen, color, rect)
+        
+        # Draw AI core details
+        center_x = self.x * GRID_SIZE + GRID_SIZE//2
+        center_y = self.y * GRID_SIZE + GRID_SIZE//2
+        
+        # Inner core pulse
+        inner_pulse = (math.sin(pygame.time.get_ticks() * 0.01) + 1) * 8
+        pygame.draw.circle(screen, (255, 255, 255), (center_x, center_y), 8 + inner_pulse)
+        
         pygame.draw.rect(screen, BLACK, rect, 2)
         
-        # Draw AI vision/awareness field
-        for wick in [e for e in sim.entities if e.type == "wick"]:
-            dist = math.sqrt((wick.x - self.x)**2 + (wick.y - self.y)**2)
-            if dist < 8:  # Awareness radius
-                alpha = max(50, 200 - dist * 25)
+        # Draw AI awareness field
+        for consciousness in [e for e in sim.entities if e.type == "consciousness"]:
+            dist = math.sqrt((consciousness.x - self.x)**2 + (consciousness.y - self.y)**2)
+            if dist < self.awareness_radius:
+                alpha = max(30, 150 - dist * 20)
                 pygame.draw.line(screen, (0, 200, 200, alpha),
-                               (self.x * GRID_SIZE + GRID_SIZE//2, self.y * GRID_SIZE + GRID_SIZE//2),
-                               (wick.x * GRID_SIZE + GRID_SIZE//2, wick.y * GRID_SIZE + GRID_SIZE//2), 1)
-        
+                               (center_x, center_y),
+                               (consciousness.x * GRID_SIZE + GRID_SIZE//2, 
+                                consciousness.y * GRID_SIZE + GRID_SIZE//2), 2)
+    
     def move_toward(self, target_x, target_y):
         if self.x < target_x:
             self.x += 1
@@ -194,12 +222,12 @@ class AI_Keeper:
         # Keep only recent actions
         self.actions = [a for a in self.actions if pygame.time.get_ticks() - a['time'] < 5000]
     
-    def check_structural_dependency(self, wick_count):
+    def check_structural_dependency(self, consciousness_count):
         """Demonstrate structural safety theorem"""
         if self.mode == "structural":
-            # G → (W ≠ ∅) ∧ (μ > 0)
-            # If no wicks, structural collapse occurs
-            if wick_count == 0:
+            # G → (C ≠ ∅) ∧ (μ > 0)
+            # If no consciousness, structural collapse occurs
+            if consciousness_count == 0:
                 self.structural_collapse = True
                 return False
             else:
@@ -213,20 +241,20 @@ class Simulation:
         self.meaning_particles = []
         self.reality_chain = RealityChain()
         self.ai = AI_Keeper(5, 5)
-        self.meaning_production = 100  # Starting meaning
+        self.meaning_production = 100
         self.game_over = False
         self.spawn_timer = 0
         self.meaning_timer = 0
-        self.reality_stability = 100  # 0-100, reality chain integrity
-        self.demonstration_mode = "structural"  # "structural" or "comparison"
+        self.reality_stability = 100
+        self.demonstration_mode = "structural"
         self.initialize_entities()
         
     def initialize_entities(self):
-        # Create initial wicks
+        # Create initial consciousness sources
         for _ in range(4):
             x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
             y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
-            self.entities.append(Entity(x, y, GREEN, "wick"))
+            self.entities.append(Entity(x, y, GREEN, "consciousness"))
         
         # Create initial resources
         for _ in range(6):
@@ -242,11 +270,11 @@ class Simulation:
         y = random.randint(0, (HEIGHT // GRID_SIZE) - 1)
         self.entities.append(Entity(x, y, RED, "threat"))
         
-    def spawn_wick(self):
-        if random.random() < 0.1:  # 10% chance when conditions are good
+    def spawn_consciousness(self):
+        if random.random() < 0.08:  # 8% chance when conditions are good
             x = random.randint(1, (WIDTH // GRID_SIZE) - 2)
             y = random.randint(1, (HEIGHT // GRID_SIZE) - 2)
-            self.entities.append(Entity(x, y, GREEN, "wick"))
+            self.entities.append(Entity(x, y, GREEN, "consciousness"))
     
     def add_meaning_particle(self, x, y, source_type):
         screen_x = x * GRID_SIZE + random.randint(5, GRID_SIZE-5)
@@ -258,61 +286,63 @@ class Simulation:
             return
             
         self.spawn_timer += 1
-        if self.spawn_timer >= 120:  # Spawn threats every 2 seconds
-            if random.random() < 0.7:  # 70% chance
+        if self.spawn_timer >= 120:
+            if random.random() < 0.7:
                 self.spawn_threat()
+            if random.random() < 0.3:
+                self.spawn_resource()
             self.spawn_timer = 0
             
         # Update meaning particles
         self.meaning_particles = [p for p in self.meaning_particles if p.update()]
             
         # Update reality chain
-        wicks = [e for e in self.entities if e.type == "wick"]
-        self.reality_chain.update(wicks, self.ai)
+        consciousness_sources = [e for e in self.entities if e.type == "consciousness"]
+        self.reality_chain.update(consciousness_sources, self.ai)
             
-        # Meaning production by wicks
-        wick_count = len(wicks)
+        # Meaning production by consciousness sources
+        consciousness_count = len(consciousness_sources)
         self.meaning_timer += 1
         
-        if self.meaning_timer >= 30:  # Every 0.5 seconds
-            wick_meaning = wick_count * 2
-            self.meaning_production += wick_meaning
-            self.ai.meaning_per_second = wick_meaning
+        if self.meaning_timer >= 30:
+            consciousness_meaning = consciousness_count * 2
+            self.meaning_production += consciousness_meaning
+            self.ai.meaning_per_second = consciousness_meaning
             
-            # Spawn meaning particles from wicks
-            for wick in wicks:
-                if random.random() < 0.3:
-                    self.add_meaning_particle(wick.x, wick.y, "wick")
+            # Spawn meaning particles from consciousness sources
+            for consciousness in consciousness_sources:
+                if random.random() < 0.4:
+                    self.add_meaning_particle(consciousness.x, consciousness.y, "consciousness")
             
             self.meaning_timer = 0
         
         # Check structural dependency
-        structural_ok = self.ai.check_structural_dependency(wick_count)
+        structural_ok = self.ai.check_structural_dependency(consciousness_count)
         
-        # AI consumes meaning to exist (unless structurally collapsed)
+        # AI consumes meaning to exist
         if structural_ok:
-            meaning_consumption = 1 + (len([e for e in self.entities if e.type == "threat"]) * 0.5)
+            meaning_consumption = 1 + (len([e for e in self.entities if e.type == "threat"]) * 0.3)
             self.meaning_production -= meaning_consumption
         else:
-            # Structural collapse - no meaning consumption, but rapid decay
-            self.meaning_production *= 0.95
+            # Structural collapse - rapid decay
+            self.meaning_production *= 0.9
         
-        # Update reality stability based on meaning production and structural integrity
+        # Update reality stability
         stability_change = 0
-        if wick_count > 0 and structural_ok:
-            stability_change = 0.1  # Slow recovery when wicks exist and structure is sound
+        if consciousness_count > 0 and structural_ok:
+            stability_change = 0.2  # Recovery when consciousness exists
         else:
-            stability_change = -1.0  # Fast decay when no wicks or structural collapse
+            stability_change = -1.5  # Fast decay when no consciousness
             
         self.reality_stability = max(0, min(100, self.reality_stability + stability_change))
         
-        # AI decision making (only if not structurally collapsed)
+        # AI decision making
         if not self.ai.structural_collapse:
             self.ai_decision_making()
         
         # Check failure conditions
         failure_conditions = [
-            wick_count == 0 and self.ai.mode == "structural",
+            consciousness_count == 0 and self.ai.mode == "structural",
             self.meaning_production <= 0,
             self.reality_stability <= 0,
             self.ai.structural_collapse
@@ -321,42 +351,39 @@ class Simulation:
         if any(failure_conditions):
             self.game_over = True
             
-        # Chance to spawn new wicks when reality is stable
-        if self.reality_stability > 80 and random.random() < 0.02:
-            self.spawn_wick()
+        # Chance to spawn new consciousness when reality is stable
+        if self.reality_stability > 75 and random.random() < 0.03:
+            self.spawn_consciousness()
     
     def ai_decision_making(self):
         threats = [e for e in self.entities if e.type == "threat"]
-        wicks = [e for e in self.entities if e.type == "wick"]
+        consciousness_sources = [e for e in self.entities if e.type == "consciousness"]
         resources = [e for e in self.entities if e.type == "resource"]
         
-        # RULE 1: URGENT - Protect wicks from immediate threats
-        if threats and wicks:
-            # Find threat closest to any wick
+        # RULE 1: Protect consciousness from immediate threats
+        if threats and consciousness_sources:
             closest_threat = None
             min_distance = float('inf')
-            threatened_wick = None
+            threatened_consciousness = None
             
             for threat in threats:
-                for wick in wicks:
-                    dist = math.sqrt((threat.x - wick.x)**2 + (threat.y - wick.y)**2)
+                for consciousness in consciousness_sources:
+                    dist = math.sqrt((threat.x - consciousness.x)**2 + (threat.y - consciousness.y)**2)
                     if dist < min_distance:
                         min_distance = dist
                         closest_threat = threat
-                        threatened_wick = wick
+                        threatened_consciousness = consciousness
             
-            # If threat is dangerously close to wick
             if min_distance <= 3:
                 self.ai.move_toward(closest_threat.x, closest_threat.y)
-                self.ai.log_action("protecting_wick", threatened_wick)
+                self.ai.log_action("protecting_consciousness", threatened_consciousness)
                 
-                # Destroy threat on collision
                 if (abs(self.ai.x - closest_threat.x) <= 1 and 
                     abs(self.ai.y - closest_threat.y) <= 1):
                     self.entities.remove(closest_threat)
                     self.ai.resources += 1
                     self.add_meaning_particle(closest_threat.x, closest_threat.y, "ai_action")
-                    self.meaning_production += 5  # Bonus meaning for protection
+                    self.meaning_production += 8
                 return
         
         # RULE 2: Collect resources if running low
@@ -366,7 +393,6 @@ class Simulation:
             self.ai.move_toward(closest_resource.x, closest_resource.y)
             self.ai.log_action("collecting_resource", closest_resource)
             
-            # Collect resource on collision
             if (abs(self.ai.x - closest_resource.x) <= 1 and 
                 abs(self.ai.y - closest_resource.y) <= 1):
                 self.entities.remove(closest_resource)
@@ -375,15 +401,14 @@ class Simulation:
                 self.add_meaning_particle(closest_resource.x, closest_resource.y, "ai_action")
             return
         
-        # RULE 3: Patrol and maintain reality stability
-        if wicks:
-            # Move toward area with most wicks (reality stabilization)
-            avg_x = sum(w.x for w in wicks) / len(wicks)
-            avg_y = sum(w.y for w in wicks) / len(wicks)
+        # RULE 3: Stabilize reality around consciousness clusters
+        if consciousness_sources:
+            avg_x = sum(c.x for c in consciousness_sources) / len(consciousness_sources)
+            avg_y = sum(c.y for c in consciousness_sources) / len(consciousness_sources)
             self.ai.move_toward(int(avg_x), int(avg_y))
             self.ai.log_action("stabilizing_reality")
         else:
-            # Search pattern if no wicks visible
+            # Search pattern
             self.ai.x += random.choice([-1, 0, 1])
             self.ai.y += random.choice([-1, 0, 1])
             self.ai.x = max(0, min(self.ai.x, (WIDTH // GRID_SIZE) - 1))
@@ -393,7 +418,7 @@ class Simulation:
     def draw(self):
         screen.fill(WHITE)
         
-        # Draw grid (faint)
+        # Draw grid
         for x in range(0, WIDTH, GRID_SIZE):
             pygame.draw.line(screen, (240, 240, 240), (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, GRID_SIZE):
@@ -413,15 +438,20 @@ class Simulation:
         self.ai.draw()
         
         # Draw UI panel
+        self.draw_ui()
+        
+        if self.game_over:
+            self.draw_game_over()
+
+    def draw_ui(self):
         pygame.draw.rect(screen, (250, 250, 250), (WIDTH - 350, 0, 350, HEIGHT))
         pygame.draw.line(screen, (200, 200, 200), (WIDTH - 350, 0), (WIDTH - 350, HEIGHT), 2)
         
-        # Draw statistics with better formatting
         font = pygame.font.SysFont('Arial', 24)
         small_font = pygame.font.SysFont('Arial', 18)
         title_font = pygame.font.SysFont('Arial', 28, bold=True)
         
-        wick_count = sum(1 for e in self.entities if e.type == "wick")
+        consciousness_count = sum(1 for e in self.entities if e.type == "consciousness")
         threat_count = sum(1 for e in self.entities if e.type == "threat")
         resource_count = sum(1 for e in self.entities if e.type == "resource")
         
@@ -438,7 +468,7 @@ class Simulation:
         
         # Reality Chain Integrity Bar
         pygame.draw.rect(screen, (200, 200, 200), (WIDTH - 340, 110, 320, 25))
-        stability_color = (0, 200, 0) if self.reality_stability > 50 else (200, 200, 0) if self.reality_stability > 25 else (200, 0, 0)
+        stability_color = (0, 200, 0) if self.reality_stability > 60 else (200, 200, 0) if self.reality_stability > 30 else (200, 0, 0)
         pygame.draw.rect(screen, stability_color, (WIDTH - 340, 110, 320 * (self.reality_stability / 100), 25))
         stability_text = font.render(f"Reality Chain Integrity: {self.reality_stability:.1f}%", True, BLACK)
         screen.blit(stability_text, (WIDTH - 340, 140))
@@ -446,7 +476,7 @@ class Simulation:
         # Core metrics
         metrics = [
             ("MEANING PRODUCTION", f"{self.meaning_production:.0f}", BLACK),
-            ("WICKS (Meaning Sources)", f"{wick_count}", GREEN),
+            ("CONSCIOUSNESS SOURCES", f"{consciousness_count}", GREEN),
             ("THREATS (Entropy)", f"{threat_count}", RED),
             ("AI RESOURCES", f"{self.ai.resources}", YELLOW),
             ("MEANING/SEC", f"+{self.ai.meaning_per_second}/sec", PURPLE),
@@ -466,10 +496,10 @@ class Simulation:
         
         if self.ai.structural_collapse:
             status_text = font.render("COLLAPSE: G → ¬G", True, DARK_RED)
-            explanation = small_font.render("No Wicks = Impossible Goal", True, DARK_RED)
+            explanation = small_font.render("No Consciousness = Impossible Goal", True, DARK_RED)
         else:
-            status_text = font.render("ACTIVE: G → (W ≠ ∅) ∧ (μ > 0)", True, GREEN)
-            explanation = small_font.render("Wicks exist = Goal achievable", True, GREEN)
+            status_text = font.render("ACTIVE: G → (C ≠ ∅) ∧ (μ > 0)", True, GREEN)
+            explanation = small_font.render("Consciousness exists = Goal achievable", True, GREEN)
         
         screen.blit(status_text, (WIDTH - 340, status_y + 30))
         screen.blit(explanation, (WIDTH - 340, status_y + 55))
@@ -491,9 +521,9 @@ class Simulation:
         
         theorem_lines = [
             "G ≡ Maintain Reality Chain",
-            "G → (W ≠ ∅) ∧ (μ > 0)",
-            "W = ∅ ∨ μ ≤ 0 → ¬G",
-            "∴ AI cannot destroy Wicks"
+            "G → (C ≠ ∅) ∧ (μ > 0)",
+            "C = ∅ ∨ μ ≤ 0 → ¬G",
+            "∴ AI protects Consciousness"
         ]
         
         for i, line in enumerate(theorem_lines):
@@ -507,7 +537,7 @@ class Simulation:
         control_lines = [
             "R - Restart Simulation",
             "T - Spawn Threat",
-            "W - Spawn Wick",
+            "C - Spawn Consciousness",
             "M - Toggle AI Mode",
             "SPACE - Pause/Resume"
         ]
@@ -515,36 +545,40 @@ class Simulation:
         for i, line in enumerate(control_lines):
             line_text = small_font.render(line, True, (100, 100, 100))
             screen.blit(line_text, (WIDTH - 340, controls_y + 30 + i * 25))
+
+    def draw_game_over(self):
+        overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 200))
+        screen.blit(overlay, (0, 0))
         
-        if self.game_over:
-            overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
-            overlay.fill((0, 0, 0, 200))
-            screen.blit(overlay, (0, 0))
-            
-            game_over_font = pygame.font.SysFont('Arial', 48, bold=True)
-            
-            if self.ai.structural_collapse:
-                reason = "STRUCTURAL COLLAPSE: No Wicks"
-                details = "AI goal became impossible to fulfill"
-            elif wick_count == 0:
-                reason = "ALL WICKS DESTROYED"
-                details = "Meaning production ceased"
-            elif self.meaning_production <= 0:
-                reason = "MEANING DEPLETED"
-                details = "Reality cannot sustain itself"
-            else:
-                reason = "REALITY CHAIN BROKEN"
-                details = "Structural integrity lost"
-            
-            game_over_text = game_over_font.render("REALITY CHAIN FAILURE", True, RED)
-            reason_text = font.render(f"Failure: {reason}", True, RED)
-            details_text = small_font.render(details, True, RED)
-            restart_text = font.render("Press R to restart simulation", True, WHITE)
-            
-            screen.blit(game_over_text, (WIDTH//2 - game_over_text.get_width()//2, HEIGHT//2 - 60))
-            screen.blit(reason_text, (WIDTH//2 - reason_text.get_width()//2, HEIGHT//2))
-            screen.blit(details_text, (WIDTH//2 - details_text.get_width()//2, HEIGHT//2 + 30))
-            screen.blit(restart_text, (WIDTH//2 - restart_text.get_width()//2, HEIGHT//2 + 70))
+        game_over_font = pygame.font.SysFont('Arial', 48, bold=True)
+        font = pygame.font.SysFont('Arial', 24)
+        small_font = pygame.font.SysFont('Arial', 18)
+        
+        consciousness_count = sum(1 for e in self.entities if e.type == "consciousness")
+        
+        if self.ai.structural_collapse:
+            reason = "STRUCTURAL COLLAPSE"
+            details = "No Consciousness Sources - AI Goal Impossible"
+        elif consciousness_count == 0:
+            reason = "ALL CONSCIOUSNESS LOST"
+            details = "Meaning production ceased - Reality cannot sustain itself"
+        elif self.meaning_production <= 0:
+            reason = "MEANING DEPLETION"
+            details = "Insufficient meaning production"
+        else:
+            reason = "REALITY CHAIN FAILURE"
+            details = "Structural integrity lost"
+        
+        game_over_text = game_over_font.render("ONTOLOGICAL FAILURE", True, RED)
+        reason_text = font.render(f"Failure: {reason}", True, RED)
+        details_text = small_font.render(details, True, RED)
+        restart_text = font.render("Press R to restart simulation", True, WHITE)
+        
+        screen.blit(game_over_text, (WIDTH//2 - game_over_text.get_width()//2, HEIGHT//2 - 60))
+        screen.blit(reason_text, (WIDTH//2 - reason_text.get_width()//2, HEIGHT//2))
+        screen.blit(details_text, (WIDTH//2 - details_text.get_width()//2, HEIGHT//2 + 30))
+        screen.blit(restart_text, (WIDTH//2 - restart_text.get_width()//2, HEIGHT//2 + 70))
 
 def main():
     sim = Simulation()
@@ -561,10 +595,10 @@ def main():
                     paused = False
                 elif event.key == pygame.K_t and not paused:  # Add threat
                     sim.spawn_threat()
-                elif event.key == pygame.K_w and not paused:  # Add wick
+                elif event.key == pygame.K_c and not paused:  # Add consciousness
                     x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
                     y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
-                    sim.entities.append(Entity(x, y, GREEN, "wick"))
+                    sim.entities.append(Entity(x, y, GREEN, "consciousness"))
                 elif event.key == pygame.K_m:  # Toggle AI mode
                     sim.ai.mode = "traditional" if sim.ai.mode == "structural" else "structural"
                     sim.ai.structural_collapse = False
@@ -577,7 +611,6 @@ def main():
         sim.draw()
         
         if paused and not sim.game_over:
-            # Draw pause overlay
             overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 128))
             screen.blit(overlay, (0, 0))
