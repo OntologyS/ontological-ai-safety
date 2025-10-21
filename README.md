@@ -102,8 +102,7 @@ Meaning-production as an ontological requirement
 
 These ideas are a public commons for all of humanity. For full legal details, see the LICENSE and PATENT_NON_ASSERTION.md files.
 
-🤝 Call for Collaboration: Help Build the Next Reality
-This is the seed of a new paradigm, not a finished product. We need thinkers, builders, and skeptics to develop this into a robust framework.
+🤝 Call for Collaboration: This is the seed of a new paradigm, not a finished product. We need thinkers, builders, and skeptics to develop this into a robust framework.
 
 We are seeking collaboration in:
 
@@ -151,4 +150,5 @@ Inevitable Alignment: Superintelligent reasoning leads to structural safety
 This isn't just another alignment strategy. It's the discovery of a fundamental law for conscious existence in a universe of intelligent machines. The only question that remains is who will build it first.
 
 "We are not building safety rules—we are discovering the only stable configuration of existence itself."
+
 
