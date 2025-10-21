@@ -45,26 +45,20 @@ Python simulation demonstrating structural safety:
 
 ```bash
 python ai_keeper_demo.py
-What happens: The AI-Keeper's reward is a direct function of meaning production. Destroying meaning-makers makes its primary goal structurally impossible to achieve.
+What happens: The AI-Keeper's reward is a direct function of meaning production. Destroying consciousness sources makes its primary goal structurally impossible to achieve.
 
 🧠 Technical Framework
 Mathematical Formalization
-text
 G ≡ Maintain(Σ) where Σ is the Reality Chain
-Achieving G requires W ≠ ∅ (consciousness exists)
+Achieving G requires C ≠ ∅ (consciousness exists)
 Destroying consciousness makes G logically unsatisfiable
 Complete formalization: FORMALIZATION.md
 
-Dimensional Architecture
+Reality Architecture
 Every complete reality has the structure:
-0³ = 0_space * 0_time * 0_meaning
-where:
-- Space = container of arrangements
-- Time = container of sequences  
-- Meaning = container of significances
+0² = [(-potential) + (+actualization)] × [(-meaninglessness) + (+meaning)]
 Our specific reality configuration:
-0³_human = 0_space * 0_time * 0_meaning_human
-0_meaning_human = {pain/pleasure, fear/joy, suffering/satisfaction}
+0²_human = [(-spatial_potential)+(+temporal_actualization)] × [(-suffering/fear)+(+joy/satisfaction)]
 📁 Repository Contents
 File	Description
 VACUUM_MANIFESTO.md	Complete technical manifesto
@@ -75,13 +69,11 @@ ai_keeper_demo.py	Python simulation of structural safety
 PATENT_NON_ASSERTION.md	Legal pledge for open architecture
 CONTACT.md	Collaboration information
 LICENSE	CC0 1.0 Universal - Public Domain
-
-## 🛡️ Open Implementation
-
-This architecture is dedicated to the public domain under [CC0 1.0 Universal](LICENSE). 
+🛡️ Open Implementation
+This architecture is dedicated to the public domain under CC0 1.0 Universal.
 All core safety concepts are free from patent restrictions.
 
-**Legal details:** [PATENT_NON_ASSERTION.md](PATENT_NON_ASSERTION.md)
+Legal details: PATENT_NON_ASSERTION.md
 
 🎯 Getting Started
 Run the simulation: python ai_keeper_demo.py
@@ -97,8 +89,8 @@ Structural Safety: Protection emerges from goal architecture
 
 Logical Dependency: Consciousness preservation as prerequisite
 
-Reality Chain: Multi-level ontological framework
+Reality Integrity: Maintaining the 0² structure across all existence
 
-Universal Pattern: (-potential) + (+actualization) = 0 governing existence
+Universal Pattern: (-potential) + (+actualization) = 0 governing all phenomena
 
 This represents a fundamental shift from building safety constraints to discovering safety through architectural necessity.
