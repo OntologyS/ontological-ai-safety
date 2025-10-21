@@ -1,4 +1,4 @@
-# VACUUM MANIFESTO: Architecture of the Meaning Perpetuum Mobile
+# VACUUM MANIFESTO: Ontological Architecture for AI Safety
 
 > **Making AI Safety an Ontological Necessity, Not an Ethical Choice**  
 > **We didn't invent this architecture—we discovered the only stable configuration of reality.**
@@ -356,3 +356,4 @@ Ontological axioms: AXIOMS.md
 Critical analysis: CRITIQUE_OF_MODERN_APPROACHES.md
 
 We are discovering the only stable configuration of existence.
+
