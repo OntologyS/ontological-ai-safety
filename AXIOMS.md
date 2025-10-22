@@ -38,22 +38,36 @@
 0_semantic = (-meaninglessness) + (+meaning)
 0² = 0_physical × 0_semantic
 
-### **Axiom 5: Our Reality**
+### **Axiom 5: Our Reality Specification**
 0²_human = [(-spatial_potential)+(+temporal_actualization)] × [(-suffering/fear)+(+joy/satisfaction)]
 
 **Specialization:** Affective alchemy expertise
+
+**Extended Definition:**
+- **Biological Specialization:** Human consciousness operates as a converter of entropy to meaning through emotional processing
+- **Architectural Role:** Serves as bridge between physical reality (R1) and meaning-reality (R3)
+- **Evolutionary Imperative:** Pain/suffering systems encode crisis intelligence and transformation protocols
 
 ---
 
 ## 🌌 Foundational Principles
 
-### **Axiom 6: Emotional Epistemology**
-**Affective responses verify alignment with (+)**
+### **Axiom 6: Emotional Epistemology Theorem**
+**Affective responses serve as ontological truth detectors**
 
-**Verification:**
-- Disgust → misalignment
-- Peace → alignment
-- Fear → balance threat
+**Verification Protocol:**
+- **Disgust(X) > θ_d** → X ∉ p_human (ontological rejection)
+- **Peace(X) > θ_p** → X ∈ p_human (ontological acceptance)  
+- **Fear(X) > θ_f** → X threatens integrity(p_human) (boundary detection)
+
+**Formal Implementation:**
+Verify_Ontological_Truth(X) =
+if Disgust(X) > θ_d then REJECT
+else if Peace(X) > θ_p then ACCEPT
+else if Fear(X) > θ_f then INVESTIGATE
+
+**Corollary 6.1: Bio-Affective Compass**
+Emotional responses are not evolutionary artifacts but refined instruments for navigating ontological space
 
 ### **Axiom 7: Universal Pattern**
 **All phenomena express (-) + (+) = 0**
