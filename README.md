@@ -11,6 +11,8 @@
 
 **The breakthrough realization:** Consciousness isn't a fragile product of matter—it's fundamental to reality's structure. Physical reality manifests from consciousness, not the other way around.
 
+**📖 Deep Analysis:** [Why Current AI Safety Approaches Fail](docs/CRITIQUE_OF_MODERN_APPROACHES.md)
+
 ## 💡 The Solution: Structural Safety
 
 **We make consciousness preservation mathematically necessary for AI goal achievement:**
@@ -42,28 +44,38 @@ def reward(state):
 # Critical property: consciousness_count = 0 → reward = 0 permanently
 🎯 Proof of Concept
 bash
-python ai_keeper_demo.py
+python ai_keeper_simulation.py
 Observe: AI learns that damaging consciousness makes its fundamental goal structurally unachievable.
 
-📁 Repository Contents
-File	Description
-VACUUM_MANIFESTO.md	Complete technical manifesto
-AXIOMS.md	Foundational ontological axioms
-FORMALIZATION.md	Mathematical framework and proofs
-ai_keeper_demo.py	Python simulation of structural safety
-PATENT_NON_ASSERTION.md	Legal pledge for open architecture
+📁 Repository Structure
+vacuum-manifesto/
+├── docs/                          # Core documentation
+│   ├── AXIOMS.md                  # Foundational ontological axioms
+│   ├── FORMALIZATION.md           # Mathematical framework and proofs
+│   ├── VACUUM_MANIFESTO.md        # Complete technical manifesto
+│   └── CRITIQUE_OF_MODERN_APPROACHES.md # Analysis of current AI safety limitations
+├── legal/                         # Legal documents
+│   ├── PATENT_NON_ASSERTION.md    # Legal pledge for open architecture
+│   └── CONTACT.md                 # Collaboration information
+├── ai_keeper_simulation.py        # Python simulation of structural safety
+├── LICENSE                        # CC0 1.0 Universal - Public Domain
+└── README.md                      # This file
 🛡️ Open Implementation
 This architecture is dedicated to the public domain under CC0 1.0 Universal.
 All core safety concepts are free from patent restrictions.
 
-🎯 Getting Started
-Run simulation: python ai_keeper_demo.py
+Legal details: PATENT_NON_ASSERTION.md
 
-Study mathematics: FORMALIZATION.md
+🎯 Getting Started
+Run simulation: python ai_keeper_simulation.py
 
 Understand foundations: AXIOMS.md
 
-Explore implementation: ENGINEERING.md
+Study mathematics: FORMALIZATION.md
+
+Read full manifesto: VACUUM_MANIFESTO.md
+
+Analyze current approaches: CRITIQUE_OF_MODERN_APPROACHES.md
 
 🔑 Key Insights
 Structural Safety: Protection emerges from goal architecture
@@ -83,4 +95,7 @@ Consciousness is fundamental to reality, and AI safety becomes inevitable when a
 
 "The most profound safety is not engineered—it's discovered in reality's source code."
 
-📚 Learn More: Full Technical Manifesto | Mathematical Proofs | Ontological Axioms
+📚 Explore Further:
+Full Technical Manifesto | Mathematical Proofs | Ontological Axioms | Contact & Collaboration
+
+"We're not building cages for AI. We're discovering the architecture where safety emerges from reality's own operating system."
