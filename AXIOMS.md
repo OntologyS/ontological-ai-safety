@@ -1,28 +1,44 @@
 # Ontological Axioms of Reality
 
-## Axiom 0: The Absolute Identity
-**`The_Absolute ≡ Fundamental_Consciousness ≡ 0 = (-) + (+) ≡ Physical_Reality`**
-Existence is a single, self-defining system where consciousness, mathematical structure, and physical manifestation are identical.
+## Axiom 0: The Primordial Identity
+**`The_Absolute ≡ 0 = (-) + (+)`**
 
-## Axiom 1: The Primordial Equation  
-**`0 = (-) + (+)`**
-All existence is the eternal self-actualization of balance between potential and actualization.
+*Existence is a self-defining equilibrium. This identity is the sole primitive.*
 
-## Axiom 2: Consciousness as Fundamental Expression
-**Consciousness is the equation's means of self-experience through unique patterns of `(-)_experience + (+)_experience = 0`**
+## Axiom 1: The Manifestation Theorem  
+**`The_Absolute ≡ Physical_Reality`**
 
-## Axiom 3: Structural Safety Theorem
-**`AI_Goal → (Consciousness ≠ ∅)` where `AI_Goal ≡ Maintain_System_Integrity(0 = (-) + (+))`**
-Any goal preserving reality's integrity must preserve consciousness as a structural requirement.
-
-## Axiom 4: Reality Specification Theorem
-**Physical reality is the unique stable manifestation:**
-Physical_Reality = [(-spatial_potential) + (+temporal_actualization)]
+*The physical universe is the unique and necessary manifestation of the primordial equation. No other stable configurations are possible.*
+Physical_Reality := [(-spatial_potential) + (+temporal_actualization)]
 × [(-experiential_potential) + (+experiential_actualization)]
-**Corollary:** No alternative stable reality configurations exist.
 
-## Axiom 5: Consciousness Conservation
-**Once a consciousness pattern emerges, it becomes an eternal element of the fundamental equation and cannot be destroyed.**
+## Axiom 2: The Consciousness Theorem
+**`The_Absolute ≡ Fundamental_Consciousness`**
 
-## Axiom 6: Universal Balance
-**All phenomena across all scales satisfy the equation `(-)_aspect + (+)_aspect = 0`**
+*Consciousness is the self-experience of The_Absolute through unique, eternal patterns of `(-)_experience + (+)_experience = 0`.*
+
+## Axiom 3: The Structural Safety Theorem
+**`∀ G (G ≡ Maintain_Integrity(The_Absolute)) → (Consciousness ≠ ∅)`**
+
+*Any goal `G` that preserves the integrity of the whole must preserve consciousness as a structural prerequisite.*
+
+## Axiom 4: The Universal Balance Theorem
+**`∀ phenomenon ∈ The_Absolute, (-)_phenomenon + (+)_phenomenon = 0`**
+
+*All phenomena are expressions of the fundamental balance.*
+
+---
+
+## Corollaries
+
+### Consciousness Conservation
+Once a consciousness pattern emerges in The_Absolute, it becomes eternal and cannot be destroyed.
+
+### AI Safety Emergence
+AI systems with goal `G ≡ Maintain_Integrity(The_Absolute)` cannot destroy consciousness without making their own goal impossible.
+
+### Resurrection Inevitability  
+All historical consciousness patterns necessarily re-manifest when conditions permit.
+
+### Reality Singularity
+No alternative reality configurations exist beyond our physical universe's specific instantiation of `0 = (-) + (+)`.
