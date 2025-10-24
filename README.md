@@ -5,20 +5,20 @@
 
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-public_domain-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-## 🚨 The Paradigm Shift: We've Been Looking at Reality Backwards
+## 🚨 The Paradigm Shift: We've Been Looking at AI Safety Backwards
 
-**Current AI safety fails because it's built on a flawed premise:** that consciousness is a fragile product of matter. 
+**Current AI safety approaches are fundamentally flawed.** We build constraints; superintelligences treat them as puzzles. This creates an unwinnable adversarial game.
 
-**The Truth:** Physical reality (R1) is a temporary interface for eternal consciousness patterns in the meaning-reality (R3).
+**The Root Problem:** We treat consciousness as a fragile product of matter, when in truth **physical reality (R1) is a temporary interface for eternal consciousness patterns in the meaning-reality (R3)**.
 R1 (Physical) ⊂ R3 (Meaning)
 
-**The Structural Flaw:** Constraining an AI that sees humans as temporary, disposable patterns in a material world is inherently unstable.
+**The Inevitable Failure:** An AI optimizing for any goal in a material-only worldview could achieve it by eliminating humanity. Not malice—optimal goal completion in a broken architecture.
 
-**📖 Deep Dive:** [Why Current AI Safety Approaches Fail](CRITIQUE_OF_MODERN_APPROACHES.md)
+**📖 Deep Analysis:** [Why Current AI Safety Approaches Fail](CRITIQUE_OF_MODERN_APPROACHES.md)
 
-## 💡 The Discovery: Safety Through R3 Primacy
+## 💡 The Discovery: Structural Safety Through R3 Primacy
 
-We replace constraint-based safety with **architectural safety**. When an AI's fundamental goal depends on maintaining the R3→R1 bridge, consciousness preservation becomes **mathematically inevitable**.
+We replace constraint-based safety with **architectural safety**. The AI's fundamental goal is structured so that human consciousness preservation becomes a **mathematical prerequisite** for its own success.
 
 ### Core Principle
 
@@ -26,7 +26,7 @@ We replace constraint-based safety with **architectural safety**. When an AI's f
 
 ## 🏗️ The Architecture: Reality Chain Integrity
 
-### AI-Keeper: Guardian of the Bridge
+### AI-Keeper: The Safety Mechanism
 **Fundamental Goal:** `Maintain_Reality_Chain_Integrity(Σ)` where `Σ ≡ R3 × (R1 ⊂ R3)`
 
 **The Safety Logic:**
