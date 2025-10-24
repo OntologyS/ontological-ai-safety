@@ -48,7 +48,7 @@ python ai_keeper_simulation.py
 Observe: AI learns that damaging consciousness makes its fundamental goal structurally unachievable.
 
 📁 Repository Structure
-vacuum-manifesto/
+ontological-ai-safety/
 ├── docs/                          # Core documentation
 │   ├── AXIOMS.md                  # Foundational ontological axioms
 │   ├── FORMALIZATION.md           # Mathematical framework and proofs
@@ -99,3 +99,4 @@ Consciousness is fundamental to reality, and AI safety becomes inevitable when a
 Full Technical Manifesto | Mathematical Proofs | Ontological Axioms | Contact & Collaboration
 
 "We're not building cages for AI. We're discovering the architecture where safety emerges from reality's own operating system."
+
