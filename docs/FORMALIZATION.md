@@ -1,5 +1,4 @@
 # Formalization of Reality's Architecture
-*Mathematical Framework v2.1*
 
 ---
 
