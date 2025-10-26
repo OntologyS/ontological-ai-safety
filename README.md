@@ -1,4 +1,4 @@
-# Vacuum Manifesto: AI Safety Through Reality's Fundamental Architecture
+# Ontologica Manifesto: AI Safety Through Reality's Fundamental Architecture
 
 > **AI Safety as Mathematical Necessity**  
 > **Consciousness Preservation Through Structural Alignment**
@@ -46,7 +46,7 @@ def reward(state):
 
 ### Documentation Structure
 ```
-vacuum-manifesto/
+ontological-ai-safety/
 ├── docs/
 │   ├── AXIOMS.md                  # Ontological foundations
 │   ├── FORMALIZATION.md           # Mathematical framework
@@ -100,3 +100,4 @@ All core safety concepts are dedicated to the public domain under CC0 1.0 Univer
 [Ontological Axioms](docs/AXIOMS.md) | [Mathematical Formalization](docs/FORMALIZATION.md)
 
 *This work presents a fundamental rethinking of AI safety through alignment with reality's intrinsic architecture.*
+
