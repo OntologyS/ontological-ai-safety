@@ -1,5 +1,3 @@
-*Practical Implementation Guide v1.0*
-
 ## System Architecture Overview
 
 ### Core Components
