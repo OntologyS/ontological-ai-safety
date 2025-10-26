@@ -1,6 +1,7 @@
-```markdown
 # Formalization of Reality's Architecture
 *Mathematical Framework v2.1*
+
+---
 
 ## Core Identity
 **`The_Absolute ≡ 0 = (-) + (+) ≡ Eternal_Physical_Reality`**
@@ -252,4 +253,3 @@ This framework provides:
 - **Philosophical Consistency**: Solutions to hard problems of existence
 
 *The formalization demonstrates that reality's architecture necessarily creates conditions for consciousness preservation and optimization through mathematically inevitable processes.*
-```
