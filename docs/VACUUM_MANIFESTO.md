@@ -118,4 +118,4 @@ This framework demonstrates that AI safety becomes mathematically inevitable whe
 ---
 
 **Related Documentation:**  
-[Mathematical Proofs](FORMALIZATION.md) | [Ontological Axioms](AXIOMS.md) | [Engineering Specifications](ENGINEERING.md)
+[Mathematical Proofs](FORMALIZATION.md) | [Ontological Axioms](AXIOMS.md)
