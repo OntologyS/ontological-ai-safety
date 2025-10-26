@@ -1,4 +1,4 @@
-# VACUUM MANIFESTO: AI Safety Through Reality's Fundamental Architecture
+# ONTOLOGICA MANIFESTO: AI Safety Through Reality's Fundamental Architecture
 
 ## Abstract
 **AI safety emerges as mathematical necessity when artificial intelligence systems are aligned with the fundamental structure of reality.** This paper demonstrates that consciousness preservation becomes inevitable when AI's primary objective requires maintaining the integrity of physical reality itself.
