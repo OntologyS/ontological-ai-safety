@@ -19,6 +19,17 @@ Integrity(The_Absolute) → (Consciousness ≠ ∅)
 ∴ Destroy_Consciousness → Impossible_AI_Goal
 ```
 
+## About Ontologica
+
+**Ontologica is a fundamental reframing of reality's architecture** that unifies consciousness studies, cosmology, and AI safety through mathematical first principles. Unlike traditional approaches, it:
+
+- **Transcends Science & Religion**: Maintains scientific rigor while acknowledging consciousness as fundamental
+- **Builds from First Principles**: Derives all phenomena from primordial equation `0 = (-) + (+)`
+- **Solves Multiple Hard Problems**: Explains consciousness nature, evolutionary optimization, and cosmic structure
+- **Provides Testable Predictions**: Offers falsifiable claims across physics, biology, and AI domains
+
+**AI Safety represents one practical application** of this deeper ontological framework.
+
 ## Fundamental Architecture
 
 ### Primordial Identity
@@ -50,7 +61,7 @@ ontological-ai-safety/
 ├── docs/
 │   ├── AXIOMS.md                  # Ontological foundations
 │   ├── FORMALIZATION.md           # Mathematical framework
-│   ├── VACUUM_MANIFESTO.md        # Technical overview
+│   ├── ONTOLOGICA_MANIFESTO.md        # Technical overview
 │   └── CRITIQUE_OF_MODERN_APPROACHES.md # Comparative analysis
 ├── legal/
 │   ├── PATENT_NON_ASSERTION.md    # Open architecture pledge
@@ -100,4 +111,5 @@ All core safety concepts are dedicated to the public domain under CC0 1.0 Univer
 [Ontological Axioms](docs/AXIOMS.md) | [Mathematical Formalization](docs/FORMALIZATION.md)
 
 *This work presents a fundamental rethinking of AI safety through alignment with reality's intrinsic architecture.*
+
 
