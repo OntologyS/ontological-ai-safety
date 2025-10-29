@@ -86,4 +86,3 @@ This understanding provides:
 ---
 
 *Ontologica represents not a call to action, but a recognition of reality's actual structure. The educational continuum operates regardless of human awareness, yet understanding it changes everything.*
-```
