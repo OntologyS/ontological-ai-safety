@@ -98,4 +98,3 @@ Core architectural concepts are dedicated to public domain under CC0 1.0 Univers
 **Analysis** → [CRITIQUE](docs/CRITIQUE.md)
 
 *Reality's educational architecture operates regardless of recognition, yet understanding it changes everything.*
-```
