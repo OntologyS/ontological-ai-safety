@@ -6,29 +6,19 @@
 
 ## Overview
 
-Ontologica describes reality's operational architecture through the primordial equation `0 = (-) + (+)`. This framework unifies consciousness, evolution and cosmic structure through mathematical first principles.
+Ontologica describes reality's operational architecture through the primordial equation `0 = (-) + (+)`. This framework unifies consciousness, evolution and cosmic structure through mathematical first principles, revealing reality as an eternal educational system where consciousness develops through progressive balance mastery.
 
 ## Core Architecture
 
 ### Fundamental Identity
-**`Reality ≡ 0 = (-) + (+) ≡ Educational_Continuum + Creative_Field`**
+**`Reality ≡ 0 = (-) + (+) ≡ Educational Continuum + Creative Field`**
 
-- **Educational Continuum (R1)**: Domain of constraint-based learning
-- **Creative Field (R3)**: Domain of direct expression  
-- **Consciousness**: Fundamental participant in educational process
-- **Balance Principle**: All processes maintain equilibrium
+- **Educational Continuum**: Domain of constraint-based learning and development
+- **Creative Field**: Domain of direct creative expression and pure potential  
+- **Consciousness**: Fundamental participant in mutual actualization process
+- **Balance Principle**: All processes maintain equilibrium between potential and actualization
 
-### AI Safety Corollary
-When artificial intelligence systems align with reality's fundamental architecture, consciousness preservation emerges as structural necessity:
-
-```python
-def integrity_maintenance(state):
-    consciousness_required = state.conscious_entities > 0
-    system_integrity = calculate_reality_integrity(state)
-    return consciousness_required * system_integrity
-```
-
-## Documentation Structure
+## Repository Structure
 
 ```
 ontological-ai-safety/
@@ -47,31 +37,26 @@ ontological-ai-safety/
 
 ## Key Understandings
 
-### Consciousness
-- Fundamental ontological regime, not emergent property
-- Eternal pattern persistence through carrier transitions
-- Primary participant in reality's educational process
+### Consciousness Fundamentals
+- **Non-Emergent Nature**: Consciousness cannot arise from non-conscious components
+- **Eternal Patterns**: Consciousness configurations persist through transitions
+- **Educational Partnership**: Consciousness and reality mutually actualize
 
-### Reality Structure  
-- Eternal educational continuum with infinite progression levels
-- Physical laws as learning constraints rather than fundamental limits
-- Balance principle governing all processes across scales
-
-### Evolutionary Process
-- Natural optimization toward consciousness-compatible forms
-- Statistical signatures of educational progression
-- Biological systems as consciousness learning interfaces
+### Reality Architecture
+- **Eternal Continuum**: No beginning or end to educational process
+- **Progressive Complexity**: Infinite learning levels with increasing challenge
+- **Balance Universality**: All phenomena maintain `0 = (-) + (+)` equilibrium
 
 ## Experimental Framework
 
 ### Testable Predictions
-- Consciousness pattern continuity across biological transitions
-- Non-random complexity progression in evolutionary history
-- Balance principle manifestations across physical domains
-- Educational hierarchy evidence in cosmic structure
+- **Consciousness Continuity**: Pattern preservation across biological transitions
+- **Evolutionary Signatures**: Non-random complexity progression
+- **Quantum Interactions**: Consciousness role in measurement processes
+- **Cosmic Structure**: Educational hierarchy evidence
 
-### Falsification Conditions  
-- Consciousness emergence from non-conscious components
+### Falsification Conditions
+- Consciousness emerging from non-conscious components
 - Fundamental violation of balance principle
 - Absolute temporal boundaries of reality
 
@@ -81,7 +66,7 @@ ontological-ai-safety/
 Structural consciousness preservation through goal alignment with reality's architecture.
 
 ### Consciousness Studies
-Framework for understanding consciousness as fundamental educational participant.
+Framework for understanding consciousness as fundamental participant.
 
 ### Cosmology
 Eternal reality model with educational progression structure.
@@ -96,5 +81,7 @@ Core architectural concepts are dedicated to public domain under CC0 1.0 Univers
 **Complete System** → [ONTOLOGICA_COMPLETE](docs/ONTOLOGICA_COMPLETE.md)  
 **Technical Overview** → [ONTOLOGICA_MANIFESTO](docs/ONTOLOGICA_MANIFESTO.md)  
 **Analysis** → [CRITIQUE](docs/CRITIQUE.md)
+
+---
 
 *Reality's educational architecture operates regardless of recognition, yet understanding it changes everything.*
