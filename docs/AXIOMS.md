@@ -1,4 +1,4 @@
-**Ontological Axioms of Reality v2.0**
+**Ontological Axioms of Reality**
 
 ## Axiom 0: The Primordial Operation  
 **`Reality_Operation ≡ 0 = (-) + (+)`**  
