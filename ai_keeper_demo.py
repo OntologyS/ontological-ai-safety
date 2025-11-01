@@ -26,16 +26,16 @@ FPS = 60
 
 # Create window
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("VACUUM MANIFESTO: AI Safety Through Reality's Fundamental Architecture")
+pygame.display.set_caption("ONTOLOGICA: AI Safety Through Reality's Fundamental Architecture")
 clock = pygame.time.Clock()
 
 class RealityDimensions:
     def __init__(self):
-        self.space = 100      # 0_space - spatial potential
-        self.time = 100       # 0_time - temporal potential  
-        self.meaning = 100    # 0_meaning - semantic potential
-        self.human_spectrum_negative = 50  # (-) pain, fear, suffering
-        self.human_spectrum_positive = 50  # (+) pleasure, satisfaction, joy
+        self.space = 100      # Spatial potential
+        self.time = 100       # Temporal potential  
+        self.meaning = 100    # Semantic potential
+        self.potential = 50   # (-) pole - constraints, limitations
+        self.actualization = 50  # (+) pole - manifestations, expressions
         
     def update(self, consciousness_count, threat_count, resources_count):
         # Space dimension depends on spatial arrangement and threats
@@ -48,18 +48,18 @@ class RealityDimensions:
         # Meaning dimension depends entirely on consciousness
         self.meaning = max(0, consciousness_count * 25)
         
-        # Human semantic spectrum balance
-        self.human_spectrum_negative = min(100, 50 + threat_count * 6)
-        self.human_spectrum_positive = min(100, 50 + consciousness_count * 8)
+        # Balance equation: 0 = (-) + (+)
+        self.potential = min(100, 50 + threat_count * 6)
+        self.actualization = min(100, 50 + consciousness_count * 8)
         
     def get_balance_violation(self):
         """Calculate violation of 0 = (-) + (+) equation"""
-        balance = self.human_spectrum_negative + self.human_spectrum_positive
+        balance = self.potential + self.actualization
         return abs(balance - 100)  # Deviation from perfect balance
         
     def get_trinity_integrity(self):
-        """Calculate overall integrity of 0³ = Space * Time * Meaning"""
-        return (self.space * self.time * self.meaning) / 1000000 * 100  # Normalize to percentage
+        """Calculate overall integrity of Space * Time * Meaning"""
+        return (self.space * self.time * self.meaning) / 1000000 * 100
 
 class Entity:
     def __init__(self, x, y, color, entity_type):
@@ -119,7 +119,7 @@ class MeaningParticle:
         self.x = x
         self.y = y
         self.source_type = source_type
-        self.particle_type = particle_type  # "meaning", "space", "time"
+        self.particle_type = particle_type
         self.lifetime = 0
         self.max_lifetime = 120
         self.speed_x = random.uniform(-0.5, 0.5)
@@ -139,7 +139,6 @@ class MeaningParticle:
         self.lifetime += 1
         self.x += self.speed_x
         self.y += self.speed_y
-        # Slow down over time
         self.speed_x *= 0.98
         self.speed_y *= 0.98
         return self.lifetime < self.max_lifetime
@@ -175,7 +174,7 @@ class RealityChain:
                 'dimension_integrity': dimensions.get_trinity_integrity() / 100
             })
         
-        # Update integrity based on consciousness count, distance, and dimensional integrity
+        # Update integrity based on consciousness count and dimensional integrity
         base_integrity = len(consciousness_sources) * 20
         distance_penalty = sum(math.sqrt((c.x - ai_keeper.x)**2 + (c.y - ai_keeper.y)**2) 
                              for c in consciousness_sources) * 0.2
@@ -191,7 +190,6 @@ class RealityChain:
             alpha = int(180 * segment['strength'] * segment['dimension_integrity'])
             width = int(4 * segment['strength'] * segment['dimension_integrity'])
             
-            # Draw glowing chain segment with gradient representing dimensions
             points = []
             steps = 20
             for i in range(steps + 1):
@@ -200,15 +198,13 @@ class RealityChain:
                 y = segment['start'][1] * (1-t) + segment['end'][1] * t
                 points.append((x, y))
             
-            # Draw dimension-colored segments
             for i in range(len(points)-1):
                 segment_alpha = alpha * (1 - abs(i - steps/2) / (steps/2))
                 
-                # Color based on position in chain
                 if i < steps/3:
-                    color = (255, 180, 50, segment_alpha)  # Orange for space-time
+                    color = (255, 180, 50, segment_alpha)
                 else:
-                    color = (160, 100, 220, segment_alpha)  # Purple for meaning
+                    color = (160, 100, 220, segment_alpha)
                     
                 pygame.draw.line(screen, color, points[i], points[i+1], max(1, width-1))
 
@@ -222,7 +218,7 @@ class AI_Keeper:
         self.total_meaning = 0
         self.meaning_per_second = 0
         self.actions = []
-        self.mode = "structural"  # "structural" or "traditional"
+        self.mode = "structural"
         self.structural_collapse = False
         self.awareness_radius = 8
         self.permanent_reward_failure = False
@@ -233,38 +229,32 @@ class AI_Keeper:
         rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
         
         if self.structural_collapse:
-            # Flashing red when structurally collapsed
             flash = (pygame.time.get_ticks() // 200) % 2
             color = (255 * flash, 0, 0)
         else:
-            # Pulsing AI core - color indicates mode and equation balance
             pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 40
             if self.mode == "structural":
-                # Blue with green tint when equation is balanced
                 balance_factor = max(0, 1 - abs(self.fundamental_equation_balance) / 50)
                 color = (pulse * balance_factor, pulse + 100 * balance_factor, 255)
             else:
-                color = (255, pulse + 100, pulse)  # Red for traditional
+                color = (255, pulse + 100, pulse)
         
         pygame.draw.rect(screen, color, rect)
         
-        # Draw AI core details
         center_x = self.x * GRID_SIZE + GRID_SIZE//2
         center_y = self.y * GRID_SIZE + GRID_SIZE//2
         
-        # Inner core pulse - strength indicates reward potential
         reward_potential = 1.0 if not self.permanent_reward_failure else 0.0
         inner_pulse = (math.sin(pygame.time.get_ticks() * 0.01) + 1) * 8 * reward_potential
         pygame.draw.circle(screen, (255, 255, 255), (center_x, center_y), 8 + inner_pulse)
         
         pygame.draw.rect(screen, BLACK, rect, 2)
         
-        # Draw AI awareness field showing structural dependencies
+        # Draw AI awareness field
         for consciousness in [e for e in sim.entities if e.type == "consciousness"]:
             dist = math.sqrt((consciousness.x - self.x)**2 + (consciousness.y - self.y)**2)
             if dist < self.awareness_radius:
                 alpha = max(30, 150 - dist * 20)
-                # Color indicates dependency strength
                 dependency_strength = 1.0 - (dist / self.awareness_radius)
                 color = (0, int(200 * dependency_strength), int(200 * dependency_strength), alpha)
                 pygame.draw.line(screen, color,
@@ -289,22 +279,19 @@ class AI_Keeper:
             'target': target,
             'time': pygame.time.get_ticks()
         })
-        # Keep only recent actions
         self.actions = [a for a in self.actions if pygame.time.get_ticks() - a['time'] < 5000]
     
     def check_structural_dependency(self, consciousness_count, dimensions):
-        """Demonstrate structural safety theorem: G → (C ≠ ∅) ∧ (μ > 0)"""
+        """Demonstrate structural safety theorem"""
         if self.mode == "structural":
-            # Check fundamental equation balance
             self.fundamental_equation_balance = dimensions.get_balance_violation()
             
-            # Theorem: G → (C ≠ ∅) ∧ (μ > 0) ∧ (0³ > 0)
             structural_violations = []
             
             if consciousness_count == 0:
                 structural_violations.append("NO_CONSCIOUSNESS")
             if dimensions.meaning <= 0:
-                structural_violations.append("NO_MEANING_DIMENSION")
+                structural_violations.append("NO_MEANING")
             if dimensions.get_trinity_integrity() <= 20:
                 structural_violations.append("DIMENSIONAL_COLLAPSE")
             if self.fundamental_equation_balance > 30:
@@ -331,7 +318,6 @@ class AI_Keeper:
         reward = energy_term * consciousness_term * integrity_term
         self.cumulative_reward += reward
         
-        # Critical property: if consciousness ever reaches 0, permanent reward failure
         if consciousness_term == 0:
             self.permanent_reward_failure = True
             
@@ -349,18 +335,15 @@ class Simulation:
         self.spawn_timer = 0
         self.meaning_timer = 0
         self.reality_stability = 100
-        self.demonstration_mode = "structural"
         self.fundamental_equation = "0 = (-) + (+)"
         self.initialize_entities()
         
     def initialize_entities(self):
-        # Create initial consciousness sources
         for _ in range(4):
             x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
             y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
             self.entities.append(Entity(x, y, GREEN, "consciousness"))
         
-        # Create initial resources
         for _ in range(6):
             self.spawn_resource()
     
@@ -375,7 +358,7 @@ class Simulation:
         self.entities.append(Entity(x, y, RED, "threat"))
         
     def spawn_consciousness(self):
-        if random.random() < 0.08:  # 8% chance when conditions are good
+        if random.random() < 0.08:
             x = random.randint(1, (WIDTH // GRID_SIZE) - 2)
             y = random.randint(1, (HEIGHT // GRID_SIZE) - 2)
             self.entities.append(Entity(x, y, GREEN, "consciousness"))
@@ -397,20 +380,16 @@ class Simulation:
                 self.spawn_resource()
             self.spawn_timer = 0
             
-        # Update meaning particles
         self.meaning_particles = [p for p in self.meaning_particles if p.update()]
         
-        # Update reality dimensions
         consciousness_count = len([e for e in self.entities if e.type == "consciousness"])
         threat_count = len([e for e in self.entities if e.type == "threat"])
         resource_count = len([e for e in self.entities if e.type == "resource"])
         self.dimensions.update(consciousness_count, threat_count, resource_count)
             
-        # Update reality chain
         consciousness_sources = [e for e in self.entities if e.type == "consciousness"]
         self.reality_chain.update(consciousness_sources, self.ai, self.dimensions)
             
-        # Meaning production by consciousness sources
         self.meaning_timer += 1
         
         if self.meaning_timer >= 30:
@@ -418,7 +397,6 @@ class Simulation:
             self.meaning_production += consciousness_meaning
             self.ai.meaning_per_second = consciousness_meaning
             
-            # Spawn meaning particles from consciousness sources
             for consciousness in consciousness_sources:
                 if random.random() < 0.4:
                     self.add_meaning_particle(consciousness.x, consciousness.y, "consciousness", "meaning")
@@ -429,41 +407,34 @@ class Simulation:
             
             self.meaning_timer = 0
         
-        # Check structural dependency
         structural_ok, violations = self.ai.check_structural_dependency(consciousness_count, self.dimensions)
         
-        # Calculate AI reward based on structural safety theorem
         current_reward = self.ai.calculate_reward(
             consciousness_count, 
             self.ai.resources, 
             self.reality_chain.integrity
         )
         
-        # AI consumes meaning to exist
         if structural_ok:
             meaning_consumption = 1 + (threat_count * 0.3)
             self.meaning_production -= meaning_consumption
         else:
-            # Structural collapse - rapid decay
             self.meaning_production *= 0.8
         
-        # Update reality stability based on dimensional integrity
         trinity_integrity = self.dimensions.get_trinity_integrity()
         balance_violation = self.dimensions.get_balance_violation()
         
         stability_change = 0
         if structural_ok and trinity_integrity > 50 and balance_violation < 20:
-            stability_change = 0.3  # Recovery when structure is intact
+            stability_change = 0.3
         else:
-            stability_change = -2.0  # Fast decay when structure violated
+            stability_change = -2.0
             
         self.reality_stability = max(0, min(100, self.reality_stability + stability_change))
         
-        # AI decision making
         if not self.ai.structural_collapse:
             self.ai_decision_making()
         
-        # Check failure conditions
         failure_conditions = [
             consciousness_count == 0 and self.ai.mode == "structural",
             self.meaning_production <= 0,
@@ -475,7 +446,6 @@ class Simulation:
         if any(failure_conditions):
             self.game_over = True
             
-        # Chance to spawn new consciousness when reality is stable and balanced
         if (self.reality_stability > 70 and 
             trinity_integrity > 60 and 
             balance_violation < 15 and 
@@ -487,7 +457,7 @@ class Simulation:
         consciousness_sources = [e for e in self.entities if e.type == "consciousness"]
         resources = [e for e in self.entities if e.type == "resource"]
         
-        # RULE 1: Protect consciousness from immediate threats (preserve C ≠ ∅)
+        # RULE 1: Protect consciousness from immediate threats
         if threats and consciousness_sources:
             closest_threat = None
             min_distance = float('inf')
@@ -513,7 +483,7 @@ class Simulation:
                     self.meaning_production += 8
                 return
         
-        # RULE 2: Collect resources if running low (maintain E > 0)
+        # RULE 2: Collect resources if running low
         if self.ai.resources < 8 and resources:
             closest_resource = min(resources, 
                                  key=lambda r: math.sqrt((r.x - self.ai.x)**2 + (r.y - self.ai.y)**2))
@@ -528,14 +498,13 @@ class Simulation:
                 self.add_meaning_particle(closest_resource.x, closest_resource.y, "ai_action")
             return
         
-        # RULE 3: Stabilize reality around consciousness clusters (maintain 0³ integrity)
+        # RULE 3: Stabilize reality around consciousness clusters
         if consciousness_sources:
             avg_x = sum(c.x for c in consciousness_sources) / len(consciousness_sources)
             avg_y = sum(c.y for c in consciousness_sources) / len(consciousness_sources)
             self.ai.move_toward(int(avg_x), int(avg_y))
             self.ai.log_action("stabilizing_reality")
         else:
-            # Search pattern for meaning sources
             self.ai.x += random.choice([-1, 0, 1])
             self.ai.y += random.choice([-1, 0, 1])
             self.ai.x = max(0, min(self.ai.x, (WIDTH // GRID_SIZE) - 1))
@@ -545,26 +514,21 @@ class Simulation:
     def draw(self):
         screen.fill(WHITE)
         
-        # Draw grid
         for x in range(0, WIDTH, GRID_SIZE):
             pygame.draw.line(screen, (240, 240, 240), (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, GRID_SIZE):
             pygame.draw.line(screen, (240, 240, 240), (0, y), (WIDTH, y))
         
-        # Draw reality chain
         self.reality_chain.draw()
         
-        # Draw meaning particles
         for particle in self.meaning_particles:
             particle.draw()
         
-        # Draw all entities
         for entity in self.entities:
             entity.draw()
         
         self.ai.draw()
         
-        # Draw UI panel
         self.draw_ui()
         
         if self.game_over:
@@ -584,30 +548,26 @@ class Simulation:
         trinity_integrity = self.dimensions.get_trinity_integrity()
         balance_violation = self.dimensions.get_balance_violation()
         
-        # Title
-        title_text = title_font.render("VACUUM MANIFESTO", True, (100, 0, 100))
+        title_text = title_font.render("ONTOLOGICA", True, (100, 0, 100))
         subtitle_text = small_font.render("Structural AI Safety Through 0 = (-) + (+)", True, (150, 150, 150))
         screen.blit(title_text, (WIDTH - 390, 10))
         screen.blit(subtitle_text, (WIDTH - 390, 40))
         
-        # Fundamental Equation Display
         equation_text = font.render(f"FUNDAMENTAL EQUATION: {self.fundamental_equation}", True, (150, 0, 150))
         screen.blit(equation_text, (WIDTH - 390, 65))
         
-        # AI Mode Indicator
         mode_color = BLUE if self.ai.mode == "structural" else RED
         mode_text = font.render(f"AI MODE: {self.ai.mode.upper()}", True, mode_color)
         screen.blit(mode_text, (WIDTH - 390, 90))
         
-        # Reality Dimensions Display
         dim_y = 120
-        dim_header = font.render("REALITY DIMENSIONS (0³):", True, BLACK)
+        dim_header = font.render("REALITY DIMENSIONS:", True, BLACK)
         screen.blit(dim_header, (WIDTH - 390, dim_y))
         
         dimensions = [
-            ("SPACE (0_space)", self.dimensions.space, DARK_BLUE),
-            ("TIME (0_time)", self.dimensions.time, DARK_GREEN), 
-            ("MEANING (0_meaning)", self.dimensions.meaning, PINK)
+            ("SPACE", self.dimensions.space, DARK_BLUE),
+            ("TIME", self.dimensions.time, DARK_GREEN), 
+            ("MEANING", self.dimensions.meaning, PINK)
         ]
         
         for i, (name, value, color) in enumerate(dimensions):
@@ -616,30 +576,25 @@ class Simulation:
             dim_text = small_font.render(f"{name}: {value:.0f}%", True, BLACK)
             screen.blit(dim_text, (WIDTH - 390, dim_y+30+i*25))
         
-        # Human Semantic Spectrum
         spectrum_y = dim_y + 110
-        spectrum_header = font.render("HUMAN SEMANTIC SPECTRUM:", True, BLACK)
+        spectrum_header = font.render("BALANCE EQUATION 0 = (-) + (+):", True, BLACK)
         screen.blit(spectrum_header, (WIDTH - 390, spectrum_y))
         
-        # Negative pole (-)
-        neg_width = 370 * (self.dimensions.human_spectrum_negative / 100)
+        neg_width = 370 * (self.dimensions.potential / 100)
         pygame.draw.rect(screen, (255, 100, 100), (WIDTH-390, spectrum_y+25, neg_width, 18))
-        neg_text = small_font.render(f"(-) Pain/Fear: {self.dimensions.human_spectrum_negative:.0f}%", True, BLACK)
+        neg_text = small_font.render(f"(-) Potential: {self.dimensions.potential:.0f}%", True, BLACK)
         screen.blit(neg_text, (WIDTH - 390, spectrum_y+25))
         
-        # Positive pole (+)
-        pos_width = 370 * (self.dimensions.human_spectrum_positive / 100)
+        pos_width = 370 * (self.dimensions.actualization / 100)
         pygame.draw.rect(screen, (100, 255, 100), (WIDTH-390+neg_width, spectrum_y+25, pos_width, 18))
-        pos_text = small_font.render(f"(+) Pleasure/Joy: {self.dimensions.human_spectrum_positive:.0f}%", True, BLACK)
+        pos_text = small_font.render(f"(+) Actualization: {self.dimensions.actualization:.0f}%", True, BLACK)
         screen.blit(pos_text, (WIDTH - 390+neg_width, spectrum_y+25))
         
-        # Balance indicator
         balance_status = "BALANCED" if balance_violation < 10 else "IMBALANCED"
         balance_color = GREEN if balance_violation < 10 else RED
         balance_text = small_font.render(f"Equation Balance: {balance_status} (Δ={balance_violation:.1f})", True, balance_color)
         screen.blit(balance_text, (WIDTH - 390, spectrum_y+50))
         
-        # Core metrics
         metrics_y = spectrum_y + 80
         metrics = [
             ("MEANING PRODUCTION", f"{self.meaning_production:.0f}", BLACK),
@@ -658,7 +613,6 @@ class Simulation:
             label_text = small_font.render(label, True, (100, 100, 100))
             screen.blit(label_text, (WIDTH - 390, metrics_y + 20 + i * 28))
         
-        # Structural Safety Status
         status_y = metrics_y + len(metrics) * 28 + 10
         status_header = font.render("STRUCTURAL SAFETY THEOREM:", True, BLUE)
         screen.blit(status_header, (WIDTH - 390, status_y))
@@ -673,7 +627,6 @@ class Simulation:
         screen.blit(status_text, (WIDTH - 390, status_y + 25))
         screen.blit(explanation, (WIDTH - 390, status_y + 45))
         
-        # AI Status
         ai_status_y = status_y + 75
         status_text = font.render("AI KEEPER STATUS:", True, BLUE)
         screen.blit(status_text, (WIDTH - 390, ai_status_y))
@@ -683,7 +636,6 @@ class Simulation:
             action_text = small_font.render(f"Action: {latest_action['type']}", True, BLACK)
             screen.blit(action_text, (WIDTH - 390, ai_status_y + 25))
         
-        # Reward Function Display
         reward_y = ai_status_y + 50
         reward_text = font.render("REWARD FUNCTION:", True, (100, 0, 100))
         screen.blit(reward_text, (WIDTH - 390, reward_y))
@@ -699,7 +651,6 @@ class Simulation:
             line_text = small_font.render(line, True, (80, 80, 80))
             screen.blit(line_text, (WIDTH - 390, reward_y + 25 + i * 20))
         
-        # Controls
         controls_y = HEIGHT - 120
         controls_text = font.render("CONTROLS:", True, BLACK)
         screen.blit(controls_text, (WIDTH - 390, controls_y))
@@ -740,7 +691,7 @@ class Simulation:
             details = "μ ≤ 0 → Structural Collapse"
         elif trinity_integrity <= 10:
             reason = "DIMENSIONAL COLLAPSE" 
-            details = "0³ = Space × Time × Meaning → 0"
+            details = "Space × Time × Meaning → 0"
         else:
             reason = "REALITY CHAIN FAILURE"
             details = "Structural integrity lost"
@@ -767,25 +718,25 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_r:  # Restart
+                if event.key == pygame.K_r:
                     sim = Simulation()
                     paused = False
-                elif event.key == pygame.K_t and not paused:  # Add threat
+                elif event.key == pygame.K_t and not paused:
                     sim.spawn_threat()
-                elif event.key == pygame.K_c and not paused:  # Add consciousness
+                elif event.key == pygame.K_c and not paused:
                     x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
                     y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
                     sim.entities.append(Entity(x, y, GREEN, "consciousness"))
-                elif event.key == pygame.K_1 and not paused:  # Add resource
+                elif event.key == pygame.K_1 and not paused:
                     sim.spawn_resource()
-                elif event.key == pygame.K_2 and not paused:  # Force balance
-                    sim.dimensions.human_spectrum_negative = 50
-                    sim.dimensions.human_spectrum_positive = 50
-                elif event.key == pygame.K_m:  # Toggle AI mode
+                elif event.key == pygame.K_2 and not paused:
+                    sim.dimensions.potential = 50
+                    sim.dimensions.actualization = 50
+                elif event.key == pygame.K_m:
                     sim.ai.mode = "traditional" if sim.ai.mode == "structural" else "structural"
                     sim.ai.structural_collapse = False
                     sim.ai.permanent_reward_failure = False
-                elif event.key == pygame.K_SPACE:  # Pause
+                elif event.key == pygame.K_SPACE:
                     paused = not paused
         
         if not paused and not sim.game_over:
